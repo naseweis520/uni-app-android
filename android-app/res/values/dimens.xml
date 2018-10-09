@@ -5,6 +5,9 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
 
+    <dimen name="cardview_horizontal_padding">8dp</dimen>
+    <dimen name="cardview_vertical_padding">8dp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="main_buttonpadding">12dp</dimen>

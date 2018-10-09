@@ -1,183 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="de.unisaarland.UniApp">
+    package="de.unisaarland.UniApp">
 
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- WRITE_EXTERNAL_STORAGE is also required by Google Maps if api < 23 or Google Play SDK < 8.1 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!-- The following two permissions are not required to use
-         Google Maps Android API v2, but are recommended. -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--
+         The following two permissions are not required to use
+         Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- receive notification when boot is complete, in order to register mensa menu notifications -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
-                 android:theme="@style/AppTheme" android:allowBackup="true">
-
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".settings.SettingsActivity"  android:configChanges="orientation|screenSize"
-                  android:label="@string/settings"
-                  android:parentActivityName=".MainActivity">
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.unisaarland.UniApp.MainActivity"
-                android:theme="@style/AppTheme"/>
+                android:theme="@style/AppTheme"
+                android:value="de.unisaarland.UniApp.MainActivity" />
         </activity>
-
-        <activity android:name=".bus.BusActivity" android:label="@string/busText" android:configChanges="orientation|screenSize"
-                  android:parentActivityName=".MainActivity">
+        <activity
+            android:name=".bus.BusActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/busText"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.unisaarland.UniApp.MainActivity" />
-            </activity>
-
-        <activity android:name=".rssViews.RSSActivity" android:label="@string/eventsText" android:configChanges="orientation|screenSize"
-                  android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".rssViews.RSSActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/eventsText"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.unisaarland.UniApp.MainActivity" />
-            </activity>
-
-        <activity android:name=".staff.SearchStaffActivity" android:label="@string/staff_searchText"
-                  android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".staff.SearchStaffActivity"
+            android:label="@string/staff_searchText"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.unisaarland.UniApp.MainActivity" />
-            </activity>
-
-        <activity android:name=".campus.CampusActivity"  android:label="@string/campusText" android:launchMode="singleTop"
-                  android:parentActivityName=".MainActivity">
-            <meta-data android:name="android.app.searchable"
+        </activity>
+        <activity
+            android:name=".campus.CampusActivity"
+            android:label="@string/campusText"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
+
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.unisaarland.UniApp.MainActivity" />
-            </activity>
 
-
-        <activity android:name=".restaurant.RestaurantActivity" android:label="@string/restaurantText" android:configChanges="orientation|screenSize"
-                  android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.unisaarland.UniApp.MainActivity" />
         </activity>
-
-        <activity android:name=".restaurant.OpeningHoursActivity" android:configChanges="orientation|screenSize"
-                  android:label="@string/opening_hours"
-                  android:parentActivityName=".restaurant.RestaurantActivity">
+        <activity
+            android:name=".restaurant.RestaurantActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/restaurantText"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".restaurant.RestaurantActivity" />
-
+                android:value="de.unisaarland.UniApp.MainActivity" />
         </activity>
-
-        <activity android:name=".campus.CampusSearchActivity"
-                  android:label="@string/categories"
-                  android:parentActivityName=".campus.CampusActivity">
+        <activity
+            android:name=".campus.CampusSearchActivity"
+            android:label="@string/categories"
+            android:parentActivityName=".campus.CampusActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".campus.CampusActivity" />
-            </activity>
-
-        <activity android:name=".about.AboutActivity" android:label="@string/aboutText"
-                  android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".about.AboutActivity"
+            android:label="@string/aboutText"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.unisaarland.UniApp.MainActivity" />
-            </activity>
-
-        <activity android:name=".rssViews.RSSDetailActivity" android:configChanges="orientation|screenSize"
-                  android:parentActivityName=".rssViews.RSSActivity">
+        </activity>
+        <activity
+            android:name=".rssViews.RSSDetailActivity"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".rssViews.RSSActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".rssViews.RSSActivity" />
-            </activity>
-
-        <activity android:name=".staff.SearchResultActivity" android:launchMode="singleTop" android:configChanges="orientation|screenSize"
-                  android:label="@string/search_results"
-                  android:parentActivityName=".staff.SearchStaffActivity">
+        </activity>
+        <activity
+            android:name=".staff.SearchResultActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/search_results"
+            android:launchMode="singleTop"
+            android:parentActivityName=".staff.SearchStaffActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".staff.SearchStaffActivity" />
-            </activity>
-
-        <activity android:name=".staff.SearchResultItemDetailActivity" android:launchMode="singleTop" android:configChanges="orientation|screenSize"
-                  android:label="@string/info"
-                  android:parentActivityName=".staff.SearchResultActivity">
+        </activity>
+        <activity
+            android:name=".staff.SearchResultItemDetailActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/info"
+            android:launchMode="singleTop"
+            android:parentActivityName=".staff.SearchResultActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".staff.SearchResultActivity" />
         </activity>
-
-        <activity android:name=".staff.PersonDetailWebActivity" android:launchMode="singleTop" android:configChanges="orientation|screenSize"
-                  android:label="@string/more_info"
-                  android:parentActivityName=".staff.SearchResultItemDetailActivity">
+        <activity
+            android:name=".staff.PersonDetailWebActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/more_info"
+            android:launchMode="singleTop"
+            android:parentActivityName=".staff.SearchResultItemDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".staff.SearchResultItemDetailActivity" />
         </activity>
-
-
-        <activity android:name=".bus.BusDetailActivity" android:configChanges="orientation|screenSize"
-                  android:label="@string/busText"
-                  android:parentActivityName=".bus.BusActivity">
+        <activity
+            android:name=".bus.BusDetailActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/busText"
+            android:parentActivityName=".bus.BusActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".bus.BusActivity" />
         </activity>
-
-        <activity android:name=".restaurant.uihelper.MensaShowIngredientsActivity"
-                  android:configChanges="orientation|screenSize"
-                  android:parentActivityName=".restaurant.RestaurantActivity"
-                  android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar.MinWidth"
-                  android:excludeFromRecents="true"
-                  android:launchMode="singleInstance"
-                  android:label="@string/labels">
+        <activity
+            android:name=".restaurant.uihelper.MensaShowIngredientsActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:label="@string/labels"
+            android:launchMode="singleInstance"
+            android:parentActivityName=".restaurant.RestaurantActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar.MinWidth">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".restaurant.RestaurantActivity" />
         </activity>
 
-        <receiver android:name=".restaurant.notifications.MensaNotificationReceiver"
-                  android:enabled="false">
+        <receiver
+            android:name=".restaurant.notifications.MensaNotificationReceiver"
+            android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".restaurant.MensaAppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
-                       android:resource="@xml/mensawidget" />
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mensawidget" />
         </receiver>
 
-        <service android:name=".utils.ui.RemoteOrLocalViewAdapter$RemoteService"
+        <service
+            android:name=".utils.ui.RemoteOrLocalViewAdapter$RemoteService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <!-- Debugging Key
+        <!--
+        Debugging Key
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCuY1G1lqxKwqPhcoCdMV1CGr1LX8R_27Q"/>-->
-        <!-- Release Key Key-->
-    <meta-data
-             android:name="com.google.android.maps.v2.API_KEY"
-             android:value="AIzaSyBURTOVSL3tecwvoHo7KaY_WBMbYXvfaeA"/>
+            android:value="AIzaSyCuY1G1lqxKwqPhcoCdMV1CGr1LX8R_27Q"/>
+        -->
+        <!-- Release Key Key -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBURTOVSL3tecwvoHo7KaY_WBMbYXvfaeA" />
 
+        <activity
+            android:name=".restaurant.OpeningHoursActivity"
+            android:label="@string/title_activity_new_opening_hours"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
