@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape
+            android:shape="rectangle">
+
+            <solid android:color="@color/uni_blue" />
+        </shape>
+    </item>
+    <item
+        android:bottom="@dimen/main_buttonpadding"
+        android:left="@dimen/main_buttonpadding"
+        android:right="@dimen/main_buttonpadding"
+        android:top="@dimen/main_buttonpadding"
+        android:drawable="@drawable/ic_map_white" />
+</layer-list>
