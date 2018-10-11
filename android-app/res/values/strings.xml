@@ -163,11 +163,9 @@
     <string name="whatsnew_title">What\'s new in this version?</string>
     <string name="whatsnew_text">• Fixes for android 6\n• Dudweiler campus\n• Widget for current mensa menu\n• Scheduled notifications for mensa (experimental)\n• Source code of this app now on GitHub (check the "about" page)</string>
     <string name="whatsnew_label">Whats New</string>
-    <string name="title_activity_new_opening_hours">Opening Hours</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="globe_icon">Globe icon</string>
+    <string name="title_activity_opening_hours">Opening Hours</string>
     <string name="saarbruecken">Saarbrücken</string>
-    <string name="Homburg">Homburg</string>
-    <string name="during_semester_break">During semester break</string>
+    <string name="homburg">Homburg</string>
+    <string name="during_semester_break">Semester break:</string>
+    <string name="during_season_at_dry_weather">During season at dry weather:</string>
 </resources>

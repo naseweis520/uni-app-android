@@ -42,7 +42,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_opening_hours);
+        setContentView(R.layout.activity_opening_hours);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,7 +55,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                 toolbar.getContext(),
                 new String[]{
                         getString(R.string.saarbruecken),
-                        getString(R.string.Homburg)
+                        getString(R.string.homburg)
                 }));
 
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -190,10 +190,10 @@ public class OpeningHoursActivity extends AppCompatActivity {
                         name = "Mensa";
                         link = "http://www.studentenwerk-saarland.de/de/Verpflegung/Mensa-Campus-Homburg/Mensa";
                         opening_hours = new LinkedHashMap<>();
-                        opening_hours.put("semester", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:00 - 14:30"));
                         } });
-                        opening_hours.put("break", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_semester_break), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:00 - 14:00"));
                         } });
                     } });
@@ -204,12 +204,12 @@ public class OpeningHoursActivity extends AppCompatActivity {
                         name = "Mensa";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/mensa.html";
                         opening_hours = new LinkedHashMap<>();
-                        opening_hours.put("semester", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "11:30 - 14:30"));
                             add(new OpeningHourRule("Fr", "11:30 - 14:15"));
                             add(new OpeningHourRule("Mo-Fr (Freeflow)", "11:30 - 13:45"));
                         } });
-                        opening_hours.put("break", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_semester_break), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "11:30 - 14:15"));
                             add(new OpeningHourRule("Fr", "11:30 - 14:00"));
                             add(new OpeningHourRule("Mo-Fr (Freeflow)", "11:30 - 13:45"));
@@ -220,11 +220,11 @@ public class OpeningHoursActivity extends AppCompatActivity {
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/mensacafe.html";
                         locationAddress = "Building D4.1, Basement";
                         opening_hours = new LinkedHashMap<>();
-                        opening_hours.put("semester", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "07:45 - 19:30"));
                             add(new OpeningHourRule("Fr", "07:45 - 14:45"));
                         } });
-                        opening_hours.put("break", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_semester_break), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "07:45 - 15:00"));
                             add(new OpeningHourRule("Fr", "07:45 - 14:45"));
                         } });
@@ -233,7 +233,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                         name = "Mensagarten";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/mensagarten.html";
                         opening_hours = new LinkedHashMap<>();
-                        opening_hours.put("In Saison bei trockenem Wetter", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_season_at_dry_weather), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:00 - 15:00"));
                         } });
                     } });
@@ -277,7 +277,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                         name = "Fast Food Heroes";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/fast-food-heroes.html";
                         opening_hours = new LinkedHashMap<>();
-                        opening_hours.put("semester", new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:30 - 16:00"));
                         } });
                     } });

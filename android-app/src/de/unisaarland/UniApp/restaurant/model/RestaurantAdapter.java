@@ -1,16 +1,22 @@
 package de.unisaarland.UniApp.restaurant.model;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -56,8 +62,25 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // create a new view
-        CardView v = (CardView)LayoutInflater.from(parent.getContext()).inflate(R.layout.view_restaurants_card, parent, false);
-        return new RestaurantViewHolder(v);
+        final CardView cardView = (CardView)LayoutInflater.from(parent.getContext()).inflate(R.layout.view_restaurants_card, parent, false);
+        final ConstraintLayout constraintLayout_collapseWrapper = cardView.findViewById(R.id.constraintLayout_collapseWrapper);
+
+        // Collapse
+        toggleCard(false, cardView);
+
+        // Add handler
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(constraintLayout_collapseWrapper.getVisibility() == View.VISIBLE) {
+                    toggleCard(false, cardView);
+                } else {
+                    toggleCard(true, cardView);
+                }
+            }
+        });
+
+        return new RestaurantViewHolder(cardView);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -84,20 +107,14 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         // Set opening hours
         if(currentRestaurant.opening_hours != null) {
             for(Map.Entry<String, List<OpeningHourRule>> group : currentRestaurant.opening_hours.entrySet()) {
-                // Add title
-                String title = group.getKey();
-                if(group.getKey().equals("break")) title = context.getString(R.string.during_semester_break);
-                if(group.getKey().equals("semester")) title = context.getString(R.string.during_semester);
-
                 // Don't add title if there is none
                 if(!group.getKey().equals("")) {
                     AppCompatTextView textView_title = new AppCompatTextView(context);
-                    textView_title.setText(title);
+                    textView_title.setText(group.getKey());
                     textView_title.setTextColor(context.getResources().getColor(R.color.uni_blue));
                     textView_title.setTypeface(null, Typeface.BOLD);
                     holder.linearLayout_openingHours.addView(textView_title);
                 }
-
 
                 // Add rules
                 TableLayout tableLayout_rules = new TableLayout(context);
@@ -126,5 +143,100 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public int getItemCount() {
         return restaurants.size();
+    }
+
+    // @source: https://stackoverflow.com/a/13381228
+    private static void expand(final View v) {
+        v.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        final int targetHeight = v.getMeasuredHeight();
+
+        // Older versions of android (pre API 21) cancel animations for views with a height of 0.
+        v.getLayoutParams().height = 1;
+        v.setVisibility(View.VISIBLE);
+        Animation a = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                v.getLayoutParams().height = interpolatedTime == 1
+                        ? ViewGroup.LayoutParams.WRAP_CONTENT
+                        : (int)(targetHeight * interpolatedTime);
+                v.requestLayout();
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        // 1dp/ms
+        a.setDuration((int)(targetHeight / v.getContext().getResources().getDisplayMetrics().density));
+        v.startAnimation(a);
+    }
+
+    private static void toggleActions(final boolean visible, final LinearLayout linearLayout_actionWrapper) {
+        if(visible) {
+            linearLayout_actionWrapper.setVisibility(View.VISIBLE);
+            Animation fadeIn = new AlphaAnimation(0, 1);
+            fadeIn.setInterpolator(new AccelerateInterpolator());
+            fadeIn.setDuration(250);
+            linearLayout_actionWrapper.startAnimation(fadeIn);
+        } else {
+            Animation fadeOut = new AlphaAnimation(1, 0);
+            fadeOut.setInterpolator(new AccelerateInterpolator());
+            fadeOut.setDuration(150);
+            fadeOut.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationEnd(Animation animation) {
+                    linearLayout_actionWrapper.setVisibility(View.INVISIBLE);
+                }
+                public void onAnimationRepeat(Animation animation) {}
+                public void onAnimationStart(Animation animation) {}
+            });
+            linearLayout_actionWrapper.startAnimation(fadeOut);
+        }
+    }
+
+    private static void toggleCard(final boolean visible, final CardView cardView) {
+        final ConstraintLayout constraintLayout_collapseWrapper = cardView.findViewById(R.id.constraintLayout_collapseWrapper);
+        final ImageView imageView_expandIcon = cardView.findViewById(R.id.imageView_expandIcon);
+        final LinearLayout linearLayout_actionWrapper = cardView.findViewById(R.id.linearLayout_actionWrapper);
+
+        if(visible) {
+            ObjectAnimator anim = ObjectAnimator.ofFloat(imageView_expandIcon, "rotation", 0, 90);
+            anim.setDuration(250);
+            anim.start();
+            expand(constraintLayout_collapseWrapper);
+            toggleActions(true, linearLayout_actionWrapper);
+        } else {
+            ObjectAnimator anim = ObjectAnimator.ofFloat(imageView_expandIcon, "rotation", 90, 0);
+            anim.setDuration(250);
+            anim.start();
+            collapse(constraintLayout_collapseWrapper);
+            toggleActions(false, linearLayout_actionWrapper);
+        }
+    }
+
+    private static void collapse(final View v) {
+        final int initialHeight = v.getMeasuredHeight();
+
+        Animation a = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if(interpolatedTime == 1){
+                    v.setVisibility(View.GONE);
+                } else{
+                    v.getLayoutParams().height = initialHeight - (int)(initialHeight * interpolatedTime);
+                    v.requestLayout();
+                }
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        // 1dp/ms
+        a.setDuration((int)(initialHeight / v.getContext().getResources().getDisplayMetrics().density));
+        v.startAnimation(a);
     }
 }

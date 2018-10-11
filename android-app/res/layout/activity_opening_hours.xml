@@ -32,6 +32,7 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/container"
         android:layout_width="match_parent"

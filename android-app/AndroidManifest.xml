@@ -200,7 +200,7 @@
 
         <activity
             android:name=".restaurant.OpeningHoursActivity"
-            android:label="@string/title_activity_new_opening_hours"
+            android:label="@string/title_activity_opening_hours"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
