@@ -14,28 +14,28 @@ dependencies {
     implementation "com.android.support:support-v4:27.1.1"
 
     // Other
-    implementation 'org.jsoup:jsoup:1.8.1'
+    implementation 'org.jsoup:jsoup:1.10.2'
 }
 
 android {
     signingConfigs {
         config {
-            keyAlias 'key0'
-            keyPassword '123456'
+            keyAlias 'SE'
+            keyPassword 'vasVXJ5h'
             storeFile file('../keystore/SEChair')
-            storePassword '123456'
+            storePassword 'vasVXJ5h'
         }
     }
     compileSdkVersion 27
     buildToolsVersion '28.0.3'
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
+        targetSdkVersion 26
         vectorDrawables {
             useSupportLibrary = true
         }
-        versionCode 30
-        versionName '1.5.2'
+        versionCode 31
+        versionName '1.5.3'
     }
     sourceSets {
         main {
@@ -63,5 +63,9 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
 }

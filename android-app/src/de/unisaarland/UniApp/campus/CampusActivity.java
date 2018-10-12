@@ -1,6 +1,7 @@
 package de.unisaarland.UniApp.campus;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.SearchManager;
@@ -15,6 +16,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -31,8 +33,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -469,14 +473,21 @@ public class CampusActivity extends UpNavigationActionBarActivity
         return granted;
     }
 
+    @SuppressLint("MissingPermission") // permission checked in checkLocationUpdatesGranted
     private void initLocationUpdates() {
         if (!checkLocationUpdatesGranted())
             return;
 
-        LocationServices.FusedLocationApi.requestLocationUpdates(
-                setUpLocationClient(),
+        LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(
                 REQUEST,
-                this);  // LocationListener
+                new LocationCallback() {
+                    @Override
+                    public void onLocationResult(LocationResult locationResult) {
+                        // do work here
+                        onLocationChanged(locationResult.getLastLocation());
+                    }
+                },
+                Looper.myLooper());  // LocationListener
         if (map != null)
             map.setMyLocationEnabled(true);
     }
