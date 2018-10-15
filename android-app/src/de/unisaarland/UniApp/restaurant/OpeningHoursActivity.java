@@ -189,6 +189,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Mensa";
                         link = "http://www.studentenwerk-saarland.de/de/Verpflegung/Mensa-Campus-Homburg/Mensa";
+                        locationDescription = getContext().getString(R.string.building_x, "74");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:00 - 14:30"));
@@ -203,6 +204,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Mensa";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/mensa.html";
+                        locationDescription = getContext().getString(R.string.building_x, "D4.1");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "11:30 - 14:30"));
@@ -218,7 +220,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Mensacafé";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/mensacafe.html";
-                        locationAddress = "Building D4.1, Basement";
+                        locationDescription = getContext().getString(R.string.building_x, "D4.1") + ", " + getContext().getString(R.string.basement);
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "07:45 - 19:30"));
@@ -232,6 +234,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Mensagarten";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/mensagarten.html";
+                        locationDescription = getContext().getString(R.string.meadow_behind_building_x, "A1.7");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put(getContext().getString(R.string.during_season_at_dry_weather), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:00 - 15:00"));
@@ -240,6 +243,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Sportlertreff";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/sportlertreff.html";
+                        locationDescription = getContext().getString(R.string.hermann_neuberger_school) + ", " + getContext().getString(R.string.building_x, "4");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put("", new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Sa", "07:00 - 09:00, 11:30 - 22:00"));
@@ -249,6 +253,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Ausländer-Café (AC)";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/ac-auslaender-cafe.html";
+                        locationDescription = getContext().getString(R.string.building_x, "A3.2");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put("", new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "09:00 - 18:00"));
@@ -257,10 +262,12 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Philo-Café";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/philo-cafe.html";
+                        locationDescription = getContext().getString(R.string.building_x, "C5.2");
                     } });
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Cafete";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/cafete.html";
+                        locationDescription = getContext().getString(R.string.audimax) + ", " + getContext().getString(R.string.building_x, "B4.1");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "08:00 - 18:00"));
@@ -278,6 +285,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Café unique";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/cafe-unique.html";
+                        locationDescription = getContext().getString(R.string.campus_center) + ", " + getContext().getString(R.string.building_x, "A4.4");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put("", new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "07:00 - 18:00"));
@@ -286,6 +294,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "iCoffee";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/icoffee.html";
+                        locationDescription = getContext().getString(R.string.building_x, "E1.3");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put("", new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "07:00 - 18:00"));
@@ -294,6 +303,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Starbooks Coffee";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/starbooks-coffee.html";
+                        locationDescription = getContext().getString(R.string.sulb) + ", " + getContext().getString(R.string.building_x, "B1.1");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put("", new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "08:00 - 18:00"));
@@ -302,6 +312,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Fast Food Heroes";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/fast-food-heroes.html";
+                        locationDescription = getContext().getString(R.string.building_x, "C5.5");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:30 - 16:00"));
@@ -310,6 +321,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Campusmarkt";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/campusmarkt.html";
+                        locationDescription = getContext().getString(R.string.building_x, "C5.5");
                         opening_hours = new LinkedHashMap<>();
                         opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Th", "08:00 - 17:00"));

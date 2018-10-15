@@ -42,12 +42,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         private CardView cardView_wrapper;
         private ImageView imageView_link;
         private LinearLayout linearLayout_openingHours;
+        private TextView textView_description;
+        private TextView textView_location;
         private TextView textView_restaurantName;
         private RestaurantViewHolder(CardView cardView_wrapper) {
             super(cardView_wrapper);
             this.cardView_wrapper = cardView_wrapper;
             this.imageView_link = cardView_wrapper.findViewById(R.id.imageView_link);
             this.linearLayout_openingHours = cardView_wrapper.findViewById(R.id.linearLayout_openingHours);
+            this.textView_description = cardView_wrapper.findViewById(R.id.textView_description);
+            this.textView_location = cardView_wrapper.findViewById(R.id.textView_location);
             this.textView_restaurantName = cardView_wrapper.findViewById(R.id.textView_restaurantName);
         }
     }
@@ -69,14 +73,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         toggleCard(false, cardView);
 
         // Add handler
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(constraintLayout_collapseWrapper.getVisibility() == View.VISIBLE) {
-                    toggleCard(false, cardView);
-                } else {
-                    toggleCard(true, cardView);
-                }
+        cardView.setOnClickListener(v -> {
+            if(constraintLayout_collapseWrapper.getVisibility() == View.VISIBLE) {
+                toggleCard(false, cardView);
+            } else {
+                toggleCard(true, cardView);
             }
         });
 
@@ -88,19 +89,30 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     public void onBindViewHolder(@NonNull RestaurantViewHolder holder, int position) {
         final RestaurantDefinition currentRestaurant = restaurants.get(position);
 
-        // Set Restaurant name
+        // Set description
+        if(currentRestaurant.description == null) {
+            holder.textView_description.setVisibility(View.GONE);
+        } else {
+            holder.textView_description.setText(currentRestaurant.description);
+        }
+
+        // Set location
+        if(currentRestaurant.locationDescription == null) {
+            holder.textView_location.setVisibility(View.GONE);
+        } else {
+            holder.textView_location.setText(currentRestaurant.locationDescription);
+        }
+
+        // Set name
         holder.textView_restaurantName.setText(currentRestaurant.name);
 
         // Set link or hide
         if(currentRestaurant.link == null) {
             holder.imageView_link.setVisibility(View.INVISIBLE);
         } else {
-            holder.imageView_link.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentRestaurant.link));
-                    context.startActivity(browserIntent);
-                }
+            holder.imageView_link.setOnClickListener(v -> {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentRestaurant.link));
+                context.startActivity(browserIntent);
             });
         }
 
@@ -111,7 +123,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
                 if(!group.getKey().equals("")) {
                     AppCompatTextView textView_title = new AppCompatTextView(context);
                     textView_title.setText(group.getKey());
-                    textView_title.setTextColor(context.getResources().getColor(R.color.uni_blue));
                     textView_title.setTypeface(null, Typeface.BOLD);
                     holder.linearLayout_openingHours.addView(textView_title);
                 }
