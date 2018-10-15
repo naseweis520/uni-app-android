@@ -17,6 +17,7 @@ import android.widget.TextView;
 import de.unisaarland.UniApp.about.AboutActivity;
 import de.unisaarland.UniApp.bus.BusActivity;
 import de.unisaarland.UniApp.campus.CampusActivity;
+import de.unisaarland.UniApp.restaurant.OpeningHoursActivity;
 import de.unisaarland.UniApp.restaurant.RestaurantActivity;
 import de.unisaarland.UniApp.restaurant.notifications.MensaNotifications;
 import de.unisaarland.UniApp.rssViews.RSSActivity;
@@ -114,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, RestaurantActivity.class);
                 MainActivity.this.startActivity(myIntent);
+            }
+        });
+        restaurantButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, OpeningHoursActivity.class);
+                MainActivity.this.startActivity(myIntent);
+                return true;
             }
         });
         Button campusButton = (Button) findViewById(R.id.campusBtn);

@@ -240,6 +240,11 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Sportlertreff";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/sportlertreff.html";
+                        opening_hours = new LinkedHashMap<>();
+                        opening_hours.put("", new ArrayList<OpeningHourRule>() { {
+                            add(new OpeningHourRule("Mo-Sa", "07:00 - 09:00, 11:30 - 22:00"));
+                            add(new OpeningHourRule("Su", "07:30 - 09:00, 11:30 - 13:00"));
+                        } });
                     } });
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Ausländer-Café (AC)";
@@ -256,22 +261,43 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Cafete";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/cafete.html";
+                        opening_hours = new LinkedHashMap<>();
+                        opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
+                            add(new OpeningHourRule("Mo-Th", "08:00 - 18:00"));
+                            add(new OpeningHourRule("Fr", "08:00 - 16:00"));
+                        } });
                     } });
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "KHG-Café";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/khg-cafe.html";
+                        opening_hours = new LinkedHashMap<>();
+                        opening_hours.put("", new ArrayList<OpeningHourRule>() { {
+                            add(new OpeningHourRule("Mo-Th", "11:00 - 16:00"));
+                        } });
                     } });
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Café unique";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/cafe-unique.html";
+                        opening_hours = new LinkedHashMap<>();
+                        opening_hours.put("", new ArrayList<OpeningHourRule>() { {
+                            add(new OpeningHourRule("Mo-Fr", "07:00 - 18:00"));
+                        } });
                     } });
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "iCoffee";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/icoffee.html";
+                        opening_hours = new LinkedHashMap<>();
+                        opening_hours.put("", new ArrayList<OpeningHourRule>() { {
+                            add(new OpeningHourRule("Mo-Fr", "07:00 - 18:00"));
+                        } });
                     } });
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Starbooks Coffee";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/starbooks-coffee.html";
+                        opening_hours = new LinkedHashMap<>();
+                        opening_hours.put("", new ArrayList<OpeningHourRule>() { {
+                            add(new OpeningHourRule("Mo-Fr", "08:00 - 18:00"));
+                        } });
                     } });
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Fast Food Heroes";
@@ -284,6 +310,11 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Campusmarkt";
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/campusmarkt.html";
+                        opening_hours = new LinkedHashMap<>();
+                        opening_hours.put(getContext().getString(R.string.during_semester), new ArrayList<OpeningHourRule>() { {
+                            add(new OpeningHourRule("Mo-Th", "08:00 - 17:00"));
+                            add(new OpeningHourRule("Fr", "08:00 - 16:00"));
+                        } });
                     } });
             }
 
