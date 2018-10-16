@@ -6,72 +6,44 @@ import android.preference.PreferenceManager;
 
 import de.unisaarland.UniApp.R;
 import de.unisaarland.UniApp.restaurant.MensaAppWidgetProvider;
+import de.unisaarland.UniApp.restaurant.MensaMenuActivity.Campuses;
 import de.unisaarland.UniApp.utils.ContentCache;
 import de.unisaarland.UniApp.utils.NetworkRetrieveAndCache;
 import de.unisaarland.UniApp.utils.Util;
 
 public class CachedMensaPlan {
-
-    private static final String MENSA_URL_SB = "http://studentenwerk-saarland.de/_menu/actual/speiseplan-saarbruecken.xml";
     private static final String MENSA_URL_HOM = "http://studentenwerk-saarland.de/_menu/actual/speiseplan-homburg.xml";
-
+    private static final String MENSA_URL_MENSAGARTEN = "http://studentenwerk-saarland.de/_menu/actual/speiseplan-mensagarten.xml";
+    private static final String MENSA_URL_SB = "http://studentenwerk-saarland.de/_menu/actual/speiseplan-saarbruecken.xml";
+    private final NetworkRetrieveAndCache.Delegate<MensaDayMenu[]> networkDelegate;
+    private final Context context;
+    private Campuses campus;
     private NetworkRetrieveAndCache<MensaDayMenu[]> mensaFetcher = null;
 
-    private final NetworkRetrieveAndCache.Delegate<MensaDayMenu[]> networkDelegate;
-
-    private final Context context;
-
-    public CachedMensaPlan(
-            NetworkRetrieveAndCache.Delegate<MensaDayMenu[]> networkDelegate,
-            Context context) {
+    public CachedMensaPlan(Campuses campus,
+                           NetworkRetrieveAndCache.Delegate<MensaDayMenu[]> networkDelegate,
+                           Context context) {
+        if (campus == null) {
+            // Load campus from preferences
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+            String campusString = settings.getString(context.getString(R.string.pref_campus), context.getString(R.string.pref_campus_saar));
+            this.campus = campusString.equals(context.getString(R.string.pref_campus_saar)) ? Campuses.Saarbruecken : Campuses.Homburg;
+        } else {
+            this.campus = campus;
+        }
         this.networkDelegate = networkDelegate;
         this.context = context;
     }
 
-    private void initFetcher() {
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        String campus = settings.getString(context.getString(R.string.pref_campus),
-                context.getString(R.string.pref_campus_saar));
-        String mensaUrl = campus.equals(context.getString(R.string.pref_campus_saar))
-                ? MENSA_URL_SB : MENSA_URL_HOM;
-
-        if (mensaFetcher == null || !mensaUrl.equals(mensaFetcher.getUrl())) {
-            ContentCache cache = Util.getContentCache(context);
-            mensaFetcher = new NetworkRetrieveAndCache<>(mensaUrl, "mensa-"+campus, cache,
-                    new MensaXMLParser(), new NetworkDelegate(), context);
-        }
-    }
-
-    /**
-     * @return true if the data was initially loaded from the cache, false otherwise. in any case,
-     *         reloading might have been triggered.
-     */
-    public boolean load(int reloadIfOlderSeconds) {
-        initFetcher();
-        return mensaFetcher.loadAsynchronously(reloadIfOlderSeconds);
-    }
-
-    public void cancel() {
-        if (mensaFetcher != null) {
-            mensaFetcher.cancel();
-            mensaFetcher = null;
-        }
-    }
-
-    public static boolean loadedSince(long timeMillis, Context context) {
-        CachedMensaPlan plan = new CachedMensaPlan(null, context);
+    public static boolean loadedSince(Campuses campus, long timeMillis, Context context) {
+        CachedMensaPlan plan = new CachedMensaPlan(campus, null, context);
         plan.initFetcher();
         boolean ret = plan.loadedSince(timeMillis);
         plan.cancel();
         return ret;
     }
 
-    public boolean loadedSince(long timeMillis) {
-        initFetcher();
-        return mensaFetcher.loadedSince(timeMillis);
-    }
-
-    public static MensaDayMenu getTodaysMenuIfLoaded(Context context) {
+    public static MensaDayMenu getTodaysMenuIfLoaded(Campuses campus, Context context) {
         final MensaDayMenu[] todayMenu = new MensaDayMenu[1];
         final long todayMillis = Util.getStartOfDay().getTimeInMillis();
 
@@ -104,9 +76,51 @@ public class CachedMensaPlan {
                         return null;
                     }
                 };
-        CachedMensaPlan plan = new CachedMensaPlan(delegate, context);
+        CachedMensaPlan plan = new CachedMensaPlan(campus, delegate, context);
         plan.load(-1);
         return todayMenu[0];
+    }
+
+    private void initFetcher() {
+        String mensaUrl;
+        switch (campus) {
+            case Homburg:
+                mensaUrl = MENSA_URL_HOM;
+                break;
+            case Mensagarten:
+                mensaUrl = MENSA_URL_MENSAGARTEN;
+                break;
+            case Saarbruecken:
+            default:
+                mensaUrl = MENSA_URL_SB;
+        }
+
+        if (mensaFetcher == null || !mensaUrl.equals(mensaFetcher.getUrl())) {
+            ContentCache cache = Util.getContentCache(context);
+            mensaFetcher = new NetworkRetrieveAndCache<>(mensaUrl, "mensa-" + campus, cache,
+                    new MensaXMLParser(), new NetworkDelegate(), context);
+        }
+    }
+
+    /**
+     * @return true if the data was initially loaded from the cache, false otherwise. in any case,
+     * reloading might have been triggered.
+     */
+    public boolean load(int reloadIfOlderSeconds) {
+        initFetcher();
+        return mensaFetcher.loadAsynchronously(reloadIfOlderSeconds);
+    }
+
+    public void cancel() {
+        if (mensaFetcher != null) {
+            mensaFetcher.cancel();
+            mensaFetcher = null;
+        }
+    }
+
+    public boolean loadedSince(long timeMillis) {
+        initFetcher();
+        return mensaFetcher.loadedSince(timeMillis);
     }
 
     private final class NetworkDelegate

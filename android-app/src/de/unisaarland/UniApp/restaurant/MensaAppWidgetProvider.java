@@ -22,10 +22,11 @@ public class MensaAppWidgetProvider extends AppWidgetProvider {
     }
 
     public static void updateAllWidgets(Context context) {
-        MensaDayMenu todayMenu = CachedMensaPlan.getTodaysMenuIfLoaded(context);
+        MensaDayMenu todayMenu = CachedMensaPlan.getTodaysMenuIfLoaded(null, context);
         if (todayMenu == null) {
             Log.w(TAG, "no cached mensa menu, skipping widget update and triggering loading");
-            new CachedMensaPlan(null, context).load(30*60);
+            // @TODO: campus
+            new CachedMensaPlan(null, null, context).load(30*60);
             return;
         }
 

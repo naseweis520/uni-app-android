@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="de.unisaarland.UniApp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -81,10 +82,11 @@
                 android:value="de.unisaarland.UniApp.MainActivity" />
         </activity>
         <activity
-            android:name=".restaurant.RestaurantActivity"
+            android:name=".restaurant.MensaMenuActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/restaurantText"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.unisaarland.UniApp.MainActivity" />
@@ -158,11 +160,11 @@
             android:excludeFromRecents="true"
             android:label="@string/labels"
             android:launchMode="singleInstance"
-            android:parentActivityName=".restaurant.RestaurantActivity"
+            android:parentActivityName=".restaurant.MensaMenuActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar.MinWidth">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".restaurant.RestaurantActivity" />
+                android:value=".restaurant.MensaMenuActivity" />
         </activity>
 
         <receiver
@@ -201,7 +203,7 @@
         <activity
             android:name=".restaurant.OpeningHoursActivity"
             android:label="@string/title_activity_opening_hours"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

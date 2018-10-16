@@ -1,5 +1,6 @@
 package de.unisaarland.UniApp.restaurant;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -31,7 +32,10 @@ import java.util.List;
 import java.util.Map;
 
 import de.unisaarland.UniApp.R;
+import de.unisaarland.UniApp.about.AboutActivity;
+import de.unisaarland.UniApp.restaurant.MensaMenuActivity.Campuses;
 import de.unisaarland.UniApp.restaurant.model.RestaurantAdapter;
+import de.unisaarland.UniApp.settings.SettingsActivity;
 
 import static de.unisaarland.UniApp.restaurant.OpeningHoursActivity.CampusRestaurantsFragment.*;
 
@@ -64,14 +68,14 @@ public class OpeningHoursActivity extends AppCompatActivity {
                 // When the given dropdown item is selected, show its contents in the
                 // container view.
 
-                final String campus;
+                final Campuses campus;
                 switch(position) {
                     case 0:
                     default:
-                        campus = "saarbrücken";
+                        campus = Campuses.Saarbruecken;
                         break;
                     case 1:
-                        campus = "homburg";
+                        campus = Campuses.Homburg;
                 }
 
                 getSupportFragmentManager().beginTransaction()
@@ -98,22 +102,20 @@ public class OpeningHoursActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_opening_hours, menu);
+        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if(id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.show_settings:
+                startActivity(new Intent(OpeningHoursActivity.this, SettingsActivity.class));
+                return true;
+            case R.id.action_about:
+                startActivity(new Intent(OpeningHoursActivity.this, AboutActivity.class));
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -172,10 +174,10 @@ public class OpeningHoursActivity extends AppCompatActivity {
         public CampusRestaurantsFragment() {
         }
 
-        public static CampusRestaurantsFragment newInstance(String campus) {
+        public static CampusRestaurantsFragment newInstance(Campuses campus) {
             CampusRestaurantsFragment fragment = new CampusRestaurantsFragment();
             Bundle args = new Bundle();
-            args.putString(ARG_CAMPUS, campus);
+            args.putInt(ARG_CAMPUS, campus.ordinal());
             fragment.setArguments(args);
             return fragment;
         }
@@ -184,8 +186,8 @@ public class OpeningHoursActivity extends AppCompatActivity {
         public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             List<RestaurantDefinition> restaurantList = new ArrayList<>();
 
-            switch(getArguments().getString(ARG_CAMPUS).toLowerCase()) {
-                case "homburg":
+            switch(Campuses.values()[getArguments().getInt(ARG_CAMPUS)]) {
+                case Homburg:
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Mensa";
                         link = "http://www.studentenwerk-saarland.de/de/Verpflegung/Mensa-Campus-Homburg/Mensa";
@@ -199,7 +201,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                         } });
                     } });
                     break;
-                case "saarbrücken":
+                case Saarbruecken:
                 default:
                     restaurantList.add(new RestaurantDefinition() { {
                         name = "Mensa";
@@ -330,7 +332,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     } });
             }
 
-            View rootView = inflater.inflate(R.layout.fragment_openinghours, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_opening_hours, container, false);
 
             recyclerView_restaurant = rootView.findViewById(R.id.recyclerView_restaurant);
             recyclerView_restaurant.setHasFixedSize(true);

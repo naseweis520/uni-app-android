@@ -17,8 +17,8 @@ import android.widget.TextView;
 import de.unisaarland.UniApp.about.AboutActivity;
 import de.unisaarland.UniApp.bus.BusActivity;
 import de.unisaarland.UniApp.campus.CampusActivity;
+import de.unisaarland.UniApp.restaurant.MensaMenuActivity;
 import de.unisaarland.UniApp.restaurant.OpeningHoursActivity;
-import de.unisaarland.UniApp.restaurant.RestaurantActivity;
 import de.unisaarland.UniApp.restaurant.notifications.MensaNotifications;
 import de.unisaarland.UniApp.rssViews.RSSActivity;
 import de.unisaarland.UniApp.settings.SettingsActivity;
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         restaurantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, RestaurantActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, MensaMenuActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
         });

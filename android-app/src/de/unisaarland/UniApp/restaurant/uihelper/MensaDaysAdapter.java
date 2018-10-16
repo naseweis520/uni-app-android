@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import de.unisaarland.UniApp.R;
-import de.unisaarland.UniApp.restaurant.RestaurantActivity;
+import de.unisaarland.UniApp.restaurant.MensaMenuActivity;
 import de.unisaarland.UniApp.restaurant.model.MensaDayMenu;
 import de.unisaarland.UniApp.restaurant.model.MensaItem;
 import de.unisaarland.UniApp.utils.ui.RemoteOrLocalViewAdapter;
@@ -57,7 +57,7 @@ public class MensaDaysAdapter extends RemoteOrLocalViewAdapter {
         builder.setAdapterOrUpdate(R.id.mensaList, adapter);
 
         if (isWidget) {
-            Intent intent = new Intent(builder.getContext(), RestaurantActivity.class);
+            Intent intent = new Intent(builder.getContext(), MensaMenuActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(builder.getContext(), 0, intent, 0);
             builder.setOnItemClickIntent(R.id.mensaList, pendingIntent);
         }

@@ -14,7 +14,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import de.unisaarland.UniApp.R;
-import de.unisaarland.UniApp.restaurant.RestaurantActivity;
+import de.unisaarland.UniApp.restaurant.MensaMenuActivity;
 import de.unisaarland.UniApp.restaurant.model.CachedMensaPlan;
 import de.unisaarland.UniApp.restaurant.model.MensaDayMenu;
 import de.unisaarland.UniApp.restaurant.model.MensaItem;
@@ -39,7 +39,7 @@ public class MensaNotificationReceiver extends BroadcastReceiver {
                 }
             }
             Log.i(TAG, "preloading mensa plan if older than " + ifOlderThanSeconds + " seconds");
-            CachedMensaPlan plan = new CachedMensaPlan(null, context);
+            CachedMensaPlan plan = new CachedMensaPlan(null, null, context);
             plan.load(ifOlderThanSeconds);
         } else if (action.equals("show")) {
             Log.i(TAG, "showing mensa menu notification");
@@ -52,7 +52,7 @@ public class MensaNotificationReceiver extends BroadcastReceiver {
     }
 
     private void showNotification(Context context) {
-        MensaDayMenu todayMenu = CachedMensaPlan.getTodaysMenuIfLoaded(context);
+        MensaDayMenu todayMenu = CachedMensaPlan.getTodaysMenuIfLoaded(null, context);
         if (todayMenu == null) {
             Log.w(TAG, "no cached mensa menu, skipping notification");
             //showErrorNotification();
@@ -60,12 +60,12 @@ public class MensaNotificationReceiver extends BroadcastReceiver {
         }
 
         // create the intent for opening the full mensa menu
-        Intent intent = new Intent(context, RestaurantActivity.class);
+        Intent intent = new Intent(context, MensaMenuActivity.class);
 
         // create an artificial stack which takes the user back through the parent activities
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         // Adds the back stack
-        stackBuilder.addParentStack(RestaurantActivity.class);
+        stackBuilder.addParentStack(MensaMenuActivity.class);
         // Adds the Intent to the top of the stack
         stackBuilder.addNextIntent(intent);
         // Gets a PendingIntent containing the entire back stack

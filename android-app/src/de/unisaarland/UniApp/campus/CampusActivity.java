@@ -64,7 +64,7 @@ import de.unisaarland.UniApp.campus.model.CustomMapTileProvider;
 import de.unisaarland.UniApp.campus.uihelper.CustomInfoWindowAdapter;
 import de.unisaarland.UniApp.campus.uihelper.SearchAdapter;
 import de.unisaarland.UniApp.database.DatabaseHandler;
-import de.unisaarland.UniApp.restaurant.RestaurantActivity;
+import de.unisaarland.UniApp.restaurant.MensaMenuActivity;
 import de.unisaarland.UniApp.utils.UpNavigationActionBarActivity;
 
 /*
@@ -170,7 +170,7 @@ public class CampusActivity extends UpNavigationActionBarActivity
                             if (p.isCanShowRightCallOut() == 1 && p.getWebsite().length() > 0) {
                                 if ((marker.getTitle().equals("Mensa") && marker.getSnippet().equals("Restaurant")) ||
                                         marker.getTitle().equals("Mensacafé")) {
-                                    Intent myIntent = new Intent(CampusActivity.this, RestaurantActivity.class);
+                                    Intent myIntent = new Intent(CampusActivity.this, MensaMenuActivity.class);
                                     CampusActivity.this.startActivity(myIntent);
 
                                 } else {

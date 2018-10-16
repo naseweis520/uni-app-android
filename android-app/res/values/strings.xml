@@ -162,9 +162,9 @@
     <string name="visit_github">Visit source code on GitHub</string>
     <string name="whatsnew_title">What\'s new in this version?</string>
     <string name="whatsnew_text">• Added bus stop Stuhlsatzenhaus\n• Fixes for android 6\n• Dudweiler campus\n• Widget for current mensa menu\n• Scheduled notifications for mensa (experimental)\n• Source code of this app now on GitHub (check the "about" page)</string>
-    <string name="whatsnew_label">Whats New</string>
+    <string name="whatsnew_label">What\'s New</string>
     <string name="title_activity_opening_hours">Opening Hours</string>
-    <string name="saarbruecken">Saarbrücken</string>
+    <string name="saarbruecken">Saar­brücken</string>
     <string name="homburg">Homburg</string>
     <string name="during_semester_break">Semester break:</string>
     <string name="during_season_at_dry_weather">During season at dry weather:</string>
@@ -176,4 +176,5 @@
     <string name="sulb">SULB</string>
     <string name="meadow_behind_building_x">Meadow behind building %1$s</string>
     <string name="hermann_neuberger_school">Hermann-Neuberger-School</string>
+    <string name="mensagarten">Mensa­garten</string>
 </resources>

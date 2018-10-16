@@ -163,7 +163,7 @@
     <string name="title_activity_opening_hours">Öffnungszeiten</string>
     <string name="during_semester_break">Vorlesungsfreie Zeit:</string>
     <string name="homburg">Homburg</string>
-    <string name="saarbruecken">Saarbrücken</string>
+    <string name="saarbruecken">Saar­brücken</string>
     <string name="during_season_at_dry_weather">Während Saison bei trockenem Wetter:</string>
     <string name="hermann_neuberger_school">Hermann-Neuberger-Sportschule</string>
     <string name="campus_center">Campus Center</string>
@@ -171,4 +171,6 @@
     <string name="sulb">SULB</string>
     <string name="building_x">Gebäude %1$s</string>
     <string name="saarland_university_logo">Universität des Saarlandes Logo</string>
+    <string name="mensagarten">Mensa­garten</string>
+    <string name="basement">Erd­geschoss</string>
 </resources>

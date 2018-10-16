@@ -63,7 +63,7 @@ public class MensaNotifications {
         // if more than 3 minutes before the notification, and not loaded within
         // the last 60 minutes, schedule within 30-90 seconds
         else if (currentMillis < nextMillis - 2 * 60 * 1000 &&
-                !CachedMensaPlan.loadedSince(currentMillis - 30 * 60 * 1000, context)) {
+                !CachedMensaPlan.loadedSince(null, - 30 * 60 * 1000, context)) {
             long min = currentMillis + 30 * 1000;
             long max = Math.min(min + 60 * 1000, nextMillis - 45 * 1000);
             millisForAlarm = min + rand.nextInt((int) (max - min));
@@ -72,7 +72,7 @@ public class MensaNotifications {
         // if more than 45 seconds before the notification, and not loaded within
         // the last 5 minutes, reload (for freshest data ;) )
         else if (currentMillis < nextMillis - 30 * 1000 &&
-                !CachedMensaPlan.loadedSince(currentMillis - 5 * 30 * 1000, context)) {
+                !CachedMensaPlan.loadedSince(null, currentMillis - 5 * 30 * 1000, context)) {
             long min = Math.max(currentMillis, nextMillis - 90 * 1000);
             long max = nextMillis - 30 * 1000;
             millisForAlarm = min + rand.nextInt((int) (max - min));

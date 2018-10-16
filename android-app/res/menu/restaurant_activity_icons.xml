@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:UniApp="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_opening_hours"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_opening_hours"
+        android:icon="@drawable/ic_access_time_white"
         android:title="@string/opening_hours"
-        UniApp:showAsAction="ifRoom" />
-    <item android:id="@+id/show_settings"
-          android:title="@string/settings"
-          UniApp:showAsAction="never" />
+        tools:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/show_settings"
+        android:title="@string/settings"
+        tools:showAsAction="never" />
+
 </menu>
