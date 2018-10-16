@@ -3,6 +3,7 @@ package de.unisaarland.UniApp.restaurant.uihelper;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,16 +128,7 @@ public class MensaMenuFragment extends Fragment {
         public void onFailure(String message) {
             ProgressBar bar = rootView.findViewById(R.id.progress_bar);
             bar.setVisibility(View.GONE);
-            new AlertDialog.Builder(getContext())
-                    .setMessage(message)
-                    .setCancelable(true)
-                    .setPositiveButton(R.string.ok,
-                            (dialog, id) -> {
-                                dialog.dismiss();
-                                // if(!hasItems)
-                                    // @TODO: onBackPressed();
-                            })
-                    .create()
+            Snackbar.make(rootView, message, Snackbar.LENGTH_LONG)
                     .show();
         }
 
