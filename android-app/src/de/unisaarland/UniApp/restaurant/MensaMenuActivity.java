@@ -105,13 +105,22 @@ public class MensaMenuActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Spinner spinner = findViewById(R.id.spinner);
         switch(item.getItemId()) {
             case R.id.show_settings:
                 startActivity(new Intent(MensaMenuActivity.this, SettingsActivity.class));
                 return true;
             case R.id.action_opening_hours:
-                //Open opening hours actions when button is pressed
-                startActivity(new Intent(MensaMenuActivity.this, OpeningHoursActivity.class));
+                // Send current visible campus to opening hour activity
+                Intent settingsIntent = new Intent(MensaMenuActivity.this, OpeningHoursActivity.class);
+                Bundle extrasBundle = new Bundle();
+                if(spinner.getSelectedItemPosition() == 0 || spinner.getSelectedItemPosition() == 1) {
+                    extrasBundle.putInt(OpeningHoursActivity.BUNDLE_CAMPUS_KEY, Campuses.Saarbruecken.ordinal());
+                } else {
+                    extrasBundle.putInt(OpeningHoursActivity.BUNDLE_CAMPUS_KEY, Campuses.Homburg.ordinal());
+                }
+                settingsIntent.putExtras(extrasBundle);
+                startActivity(settingsIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -158,33 +167,6 @@ public class MensaMenuActivity extends AppCompatActivity {
         @Override
         public void setDropDownViewTheme(Theme theme) {
             mDropDownHelper.setDropDownViewTheme(theme);
-        }
-    }
-
-
-    public static class CampusRestaurantsFragment extends Fragment {
-        private static final String ARG_CAMPUS = "campus";
-        private RecyclerView recyclerView_restaurant;
-        private RecyclerView.Adapter adapter_restaurant;
-        private RecyclerView.LayoutManager layoutManager_restaurant;
-
-
-        public CampusRestaurantsFragment() {
-        }
-
-        public static CampusRestaurantsFragment newInstance(String campus) {
-            CampusRestaurantsFragment fragment = new CampusRestaurantsFragment();
-            Bundle args = new Bundle();
-            args.putString(ARG_CAMPUS, campus);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_opening_hours, container, false);
-
-            return rootView;
         }
     }
 }

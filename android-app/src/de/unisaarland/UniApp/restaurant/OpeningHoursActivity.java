@@ -42,10 +42,13 @@ import static de.unisaarland.UniApp.restaurant.OpeningHoursActivity.CampusRestau
 // @TODO: Highlight restaurants which are open
 // @TODO: Order restaurants based on whether they are open and their distance
 public class OpeningHoursActivity extends AppCompatActivity {
+    public static final String BUNDLE_CAMPUS_KEY = "campus";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+
         setContentView(R.layout.activity_opening_hours);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -89,12 +92,26 @@ public class OpeningHoursActivity extends AppCompatActivity {
         });
 
         // Auto-select campus based on preferences
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        String campus = settings.getString(getString(R.string.pref_campus), null);
-        if(campus.equals(getString(R.string.pref_campus_saar))) {
-            spinner.setSelection(0);
+        // or display given campus if extras contain `campus`
+        if(extras != null && extras.containsKey(BUNDLE_CAMPUS_KEY)) {
+            // Bundle contains `campus`. Set spinner
+            switch(Campuses.values()[extras.getInt(BUNDLE_CAMPUS_KEY)]) {
+                case Homburg:
+                    spinner.setSelection(1);
+                    break;
+                case Saarbruecken:
+                default:
+                    spinner.setSelection(0);
+            }
         } else {
-            spinner.setSelection(1);
+            // Bundle does not contain `campus`. Load campus from preferences
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+            String campus = settings.getString(getString(R.string.pref_campus), null);
+            if(campus.equals(getString(R.string.pref_campus_saar))) {
+                spinner.setSelection(0);
+            } else {
+                spinner.setSelection(1);
+            }
         }
     }
 
