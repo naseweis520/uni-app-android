@@ -25,7 +25,6 @@ public class MensaAppWidgetProvider extends AppWidgetProvider {
         MensaDayMenu todayMenu = CachedMensaPlan.getTodaysMenuIfLoaded(null, context);
         if (todayMenu == null) {
             Log.w(TAG, "no cached mensa menu, skipping widget update and triggering loading");
-            // @TODO: campus
             new CachedMensaPlan(null, null, context).load(30*60);
             return;
         }

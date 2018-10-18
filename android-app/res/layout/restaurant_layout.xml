@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
@@ -10,7 +11,7 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/bottom_bar_background"
-        android:contentDescription="@string/empty_string" />
+        tools:ignore="ContentDescription" />
 
     <de.unisaarland.UniApp.restaurant.uihelper.CircleFlowIndicator
         android:id="@+id/viewflowindic"

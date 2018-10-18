@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mensa_item"
@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/mensa_menu_category"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -24,37 +24,30 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:visibility="visible" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/mensa_menu_category"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="6dp"
-        app:cardCornerRadius="@dimen/cardview_corner_radius"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mensa_menu_category"
-        app:layout_constraintVertical_bias="0.0">
+        app:cardCornerRadius="@dimen/cardview_corner_radius">
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:id="@+id/contentBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#d9261a">
+            android:background="#FFD9261A">
 
-            <android.support.constraint.ConstraintLayout
+            <RelativeLayout
                 android:id="@+id/content"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
@@ -66,60 +59,57 @@
 
                 <TextView
                     android:id="@+id/mensa_menu_title"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:layout_toStartOf="@id/img_info"
+                    android:layout_toLeftOf="@id/img_info"
                     android:text="--- meal title ---"
                     android:textColor="#000000"
                     android:textIsSelectable="true"
                     android:textSize="14sp"
                     android:textStyle="bold|normal"
-                    app:layout_constraintEnd_toStartOf="@+id/img_info"
-                    app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/mensa_menu_description"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:layout_below="@+id/mensa_menu_title"
+                    android:layout_toStartOf="@id/img_info"
+                    android:layout_toLeftOf="@id/img_info"
                     android:text="--- Meal description: ingredients, contents, other stuff; sometimes just two lines, but can become three or four lines long ---"
                     android:textColor="#000000"
                     android:textIsSelectable="true"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    app:layout_constraintEnd_toStartOf="@+id/img_info"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mensa_menu_title"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/img_info"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/ic_info"
                     android:contentDescription="info"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/mensa_menu_price"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/mensa_menu_description"
                     android:layout_alignParentStart="false"
                     android:layout_alignParentLeft="false"
-                    android:layout_alignParentTop="false"
-                    android:layout_alignParentBottom="false"
                     android:gravity="end"
                     android:minHeight="15dp"
                     android:text="@string/mensaPriceFormat"
                     android:textColor="#FF333333"
                     android:textSize="10sp"
                     android:textStyle="normal"
-                    android:visibility="visible"
-                    app:layout_constraintTop_toBottomOf="@+id/mensa_menu_description" />
+                    android:visibility="visible" />
 
-            </android.support.constraint.ConstraintLayout>
-        </android.support.constraint.ConstraintLayout>
+            </RelativeLayout>
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
