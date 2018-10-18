@@ -69,25 +69,29 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="#ffffff"
-                    android:text="meal title"
+                    android:text="--- meal title ---"
                     android:textColor="#000000"
+                    android:textIsSelectable="true"
                     android:textSize="14sp"
                     android:textStyle="bold|normal"
                     app:layout_constraintEnd_toStartOf="@+id/img_info"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/mensa_menu_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="#ffffff"
-                    android:text="Meal description: ingredients, contents, other stuff; sometimes just two lines, but can become three or four lines long"
+                    android:text="--- Meal description: ingredients, contents, other stuff; sometimes just two lines, but can become three or four lines long ---"
                     android:textColor="#000000"
+                    android:textIsSelectable="true"
                     android:textSize="14sp"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toStartOf="@+id/img_info"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mensa_menu_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/mensa_menu_title"
+                    tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/img_info"
@@ -118,5 +122,4 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
-
 </android.support.constraint.ConstraintLayout>
