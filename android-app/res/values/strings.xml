@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Uni Saar</string>
     <string name="newsText">News</string>
     <string name="restaurantText">Restaurant</string>
@@ -22,39 +22,7 @@
     <string name="filter">Filter</string>
     <string name="opening_hours">Opening hours</string>
     <string name="mensa">Mensa</string>
-    <string name="mensa_cafe">Mensacafé</string>
-    <string name="heroes_cafe">Heroes café</string>
-    <string name="auslander_cafe">Ausländercafé</string>
-    <string name="juristen_cafe">Juristencafé</string>
     <string name="during_semester">During the semester</string>
-    <string name="mon_to_thur">Monday to Thursday:</string>
-    <string name="mon_to_thur_time">11:30 am - 2:30 pm</string>
-    <string name="friday">Friday:</string>
-    <string name="friday_time">11:30 am - 2:15 pm</string>
-    <string name="saturday">Saturday:</string>
-    <string name="saturday_time">11:30 am - 1:30 pm</string>
-    <string name="free_flow">Free flow</string>
-    <string name="set_meal">Set meal and vegetarian meal</string>
-    <string name="mon_to_fri">Monday to Friday:</string>
-    <string name="mon_to_fri_time">11:30 am - 1:45 pm</string>
-    <string name="during_break">During semester break:</string>
-    <string name="mon_to_fri_time_hom">11.00 am - 14.30 pm</string>
-    <string name="mon_to_fri_time_hom_break"> 11.00 am - 14.00 pm</string>
-    <string name="mon_to_thur_time_break">11:30 am - 2:15 pm</string>
-    <string name="serving">Serving counter</string>
-    <string name="friday_time_break">11:30 am - 2:00 pm</string>
-    <string name="mon_to_fri_mensa_cafe_time">7:45 am - 8:00 pm</string>
-    <string name="mon_to_fri_mensa_cafe_warm_meals">warm meals all day</string>
-    <string name="mon_to_fri_mensa_cafe_warm_meals_until">(until 7:30 pm)</string>
-    <string name="mon_to_thur_time_break_mensa_cafe">7:45 am - 3:00 pm</string>
-    <string name="mon_to_thur_juristen_cafe_time">7:00 am - 4:00 pm</string>
-    <string name="friday_time_break_mensa_cafe">7:45 am - 2:45 pm</string>
-    <string name="mon_to_thur_auslander_cafe_time">9:00 am - 7:00 pm</string>
-    <string name="mon_to_thur_auslander_cafe_time_break">9:00 am - 6:00 pm</string>
-    <string name="fri_and_bank_holidayas">Friday and before bank holidays:</string>
-    <string name="fri_and_bank_holi_time">9:00 am - 5:00 pm</string>
-    <string name="friday_time_juristen">7:00 am - 3:00 pm</string>
-    <string name="mon_to_fri_juristen_cafe_time_break">7:00 am - 3:00 pm</string>
     <string name="news_article">News article</string>
     <string name="not_connected">Not connected to internet</string>
     <string name="name">NAME</string>
@@ -80,8 +48,6 @@
     <string name="too_few_search_terms_description">Please provide more or longer search terms.</string>
     <string name="empty_search_field">Empty search field</string>
     <string name="fill_at_least_one">Please fill at least one search field.</string>
-    <string name="check_internet_message">Please check your internet connection and try again.</string>
-    <string name="mon_to_fri_heroes_time">10:30 am - 4:30 pm</string>
     <string name="at_station">At bus station</string>
     <string name="search_bus">Search a bus</string>
     <string name="current_location_not_set">Current location is not set</string>
@@ -105,44 +71,44 @@
     <string name="mensaPriceFormat">students: %1$.2f€   staff: %2$.2f€   guests: %3$.2f€</string>
     <string name="no_description">no description</string>
     <!-- labels for mensa items (selected programmatically, so ignore "no use" warnings): -->
-    <string name="label_1">With dye</string>
-    <string name="label_2">With preservatives</string>
-    <string name="label_3">With antioxidants</string>
-    <string name="label_4">With flavor enhancer</string>
-    <string name="label_5">Sulfurized</string>
-    <string name="label_6">Blackened</string>
-    <string name="label_7">Waxed</string>
-    <string name="label_8">With phosphate</string>
-    <string name="label_9">With sweeteners</string>
-    <string name="label_10">Contains a source of phenylalanine</string>
-    <string name="label_11">With milk protein</string>
-    <string name="label_12">With poultry</string>
-    <string name="label_13">With pork</string>
-    <string name="label_14">With alcohol</string>
-    <string name="label_15">May contain traces of nuts</string>
-    <string name="label_16">Without pork</string>
-    <string name="label_17">With garlic</string>
-    <string name="label_18">Vegetarian</string>
-    <string name="label_19">Organic food</string>
-    <string name="label_20">With baking agent</string>
-    <string name="label_21">Free of lactose</string>
-    <string name="label_22">Vegan food</string>
-    <string name="label_23">Fish from sustainable fishing</string>
-    <string name="label_ei">Egg</string>
-    <string name="label_en">Peanut</string>
-    <string name="label_fi">Fish</string>
-    <string name="label_gl">Grain, cereals with gluten</string>
-    <string name="label_kr">Crustacean</string>
-    <string name="label_la">Milk and lactose</string>
-    <string name="label_lu">Lupine</string>
-    <string name="label_nu">Nuts</string>
-    <string name="label_se">Sesame</string>
-    <string name="label_sf">Mustard</string>
-    <string name="label_sl">Celery</string>
-    <string name="label_so">Soya</string>
-    <string name="label_sw">Sulfur dioxide / sulfites</string>
-    <string name="label_we">Wheat</string>
-    <string name="label_wt">Mollusk</string>
+    <string name="label_1" tools:keep="@string/label_1">With dye</string>
+    <string name="label_2" tools:keep="@string/label_2">With preservatives</string>
+    <string name="label_3" tools:keep="@string/label_3">With antioxidants</string>
+    <string name="label_4" tools:keep="@string/label_4">With flavor enhancer</string>
+    <string name="label_5" tools:keep="@string/label_5">Sulfurized</string>
+    <string name="label_6" tools:keep="@string/label_6">Blackened</string>
+    <string name="label_7" tools:keep="@string/label_7">Waxed</string>
+    <string name="label_8" tools:keep="@string/label_8">With phosphate</string>
+    <string name="label_9" tools:keep="@string/label_9">With sweeteners</string>
+    <string name="label_10" tools:keep="@string/label_10">Contains a source of phenylalanine</string>
+    <string name="label_11" tools:keep="@string/label_11">With milk protein</string>
+    <string name="label_12" tools:keep="@string/label_12">With poultry</string>
+    <string name="label_13" tools:keep="@string/label_13">With pork</string>
+    <string name="label_14" tools:keep="@string/label_14">With alcohol</string>
+    <string name="label_15" tools:keep="@string/label_15">May contain traces of nuts</string>
+    <string name="label_16" tools:keep="@string/label_16">Without pork</string>
+    <string name="label_17" tools:keep="@string/label_17">With garlic</string>
+    <string name="label_18" tools:keep="@string/label_18">Vegetarian</string>
+    <string name="label_19" tools:keep="@string/label_19">Organic food</string>
+    <string name="label_20" tools:keep="@string/label_20">With baking agent</string>
+    <string name="label_21" tools:keep="@string/label_21">Free of lactose</string>
+    <string name="label_22" tools:keep="@string/label_22">Vegan food</string>
+    <string name="label_23" tools:keep="@string/label_23">Fish from sustainable fishing</string>
+    <string name="label_ei" tools:keep="@string/label_ei">Egg</string>
+    <string name="label_en" tools:keep="@string/label_en">Peanut</string>
+    <string name="label_fi" tools:keep="@string/label_fi">Fish</string>
+    <string name="label_gl" tools:keep="@string/label_gl">Grain, cereals with gluten</string>
+    <string name="label_kr" tools:keep="@string/label_kr">Crustacean</string>
+    <string name="label_la" tools:keep="@string/label_la">Milk and lactose</string>
+    <string name="label_lu" tools:keep="@string/label_lu">Lupine</string>
+    <string name="label_nu" tools:keep="@string/label_nu">Nuts</string>
+    <string name="label_se" tools:keep="@string/label_se">Sesame</string>
+    <string name="label_sf" tools:keep="@string/label_sf">Mustard</string>
+    <string name="label_sl" tools:keep="@string/label_sl">Celery</string>
+    <string name="label_so" tools:keep="@string/label_so">Soya</string>
+    <string name="label_sw" tools:keep="@string/label_sw">Sulfur dioxide / sulfites</string>
+    <string name="label_we" tools:keep="@string/label_we">Wheat</string>
+    <string name="label_wt" tools:keep="@string/label_wt">Mollusk</string>
     <!-- end of labels for mensa items -->
     <string name="show_ingredients_title">Show ingredients</string>
     <string name="show_ingredients_on">Mensa ingredients are shown</string>
@@ -162,7 +128,6 @@
     <string name="visit_github">Visit source code on GitHub</string>
     <string name="whatsnew_title">What\'s new in this version?</string>
     <string name="whatsnew_text">• Fixed unresponsive bus itinerary\n• Added bus stop Stuhlsatzenhaus\n• Fixes for android 6\n• Dudweiler campus\n• Widget for current mensa menu\n• Scheduled notifications for mensa (experimental)\n• Source code of this app now on GitHub (check the "about" page)</string>
-    <string name="whatsnew_label">What\'s New</string>
     <string name="title_activity_opening_hours">Opening Hours</string>
     <string name="saarbruecken">Saar­brücken</string>
     <string name="homburg">Homburg</string>
@@ -173,9 +138,20 @@
     <string name="basement">Basement</string>
     <string name="campus_center">Campus Center</string>
     <string name="audimax">Audimax</string>
-    <string name="sulb">SULB</string>
+    <string name="sulb" translatable="false">SULB</string>
     <string name="meadow_behind_building_x">Meadow behind building %1$s</string>
     <string name="hermann_neuberger_school">Hermann-Neuberger-School</string>
     <string name="mensagarten">Mensa­garten</string>
     <string name="old_ssl_error">Not supported on old devices:%n%s</string>
+    <string name="mensacafe" translatable="false">Mensacafé</string>
+    <string name="sportlertreff" translatable="false">Sportlertreff</string>
+    <string name="auslaendercafe" translatable="false">Ausländer-Café (AC)</string>
+    <string name="philo_cafe" translatable="false">Philo-Café</string>
+    <string name="cafete" translatable="false">Cafete</string>
+    <string name="khg_cafe" translatable="false">KHG-Café</string>
+    <string name="cafe_unique" translatable="false">Café unique</string>
+    <string name="icoffee" translatable="false">iCoffee</string>
+    <string name="starbooks_coffee" translatable="false">Starbooks Coffee</string>
+    <string name="fast_food_heroes" translatable="false">Fast Food Heroes</string>
+    <string name="campusmarkt" translatable="false">Campusmarkt</string>
 </resources>
