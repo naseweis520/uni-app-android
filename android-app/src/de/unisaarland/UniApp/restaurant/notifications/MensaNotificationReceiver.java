@@ -73,7 +73,7 @@ public class MensaNotificationReceiver extends BroadcastReceiver {
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder notifBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.uds_owl_silhouette)
+                .setSmallIcon(R.drawable.ic_owl_silhouette)
                 .setContentTitle(context.getString(R.string.mensa_notification_title))
                 .setContentText(context.getString(R.string.mensa_notification_text_click))
                 .setContentIntent(pendingIntent)
