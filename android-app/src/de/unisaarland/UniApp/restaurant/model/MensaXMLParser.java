@@ -1,6 +1,9 @@
 package de.unisaarland.UniApp.restaurant.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.text.Html;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -15,6 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import de.unisaarland.UniApp.R;
 import de.unisaarland.UniApp.utils.Util;
 import de.unisaarland.UniApp.utils.XMLExtractor;
 
@@ -43,6 +47,19 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
             case "de":
             default:
                 languageSuffix = "";
+        }
+    }
+
+    /**
+     * Returns the recommended language code of the language the mensa menu should be displayed in
+     */
+    static String getMensaLanguage(Context context) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        boolean forceGerman = settings.getBoolean(context.getString(R.string.pref_mensa_force_german), false);
+        if (forceGerman) {
+            return "de";
+        } else {
+            return context.getString(R.string.mensa_language);
         }
     }
 
@@ -131,13 +148,13 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
                     // Check, if localised tag exist and if it's not empty
                     if (name.equals(CATEGORY + languageSuffix)) {
                         String val = getElementValue(parser, CATEGORY + languageSuffix);
-                        if(!val.equals("")) category = val;
+                        if (!val.equals("")) category = val;
                     } else if (name.equals(DESCRIPTION + languageSuffix)) {
                         String val = getElementValue(parser, DESCRIPTION + languageSuffix);
-                        if(!val.equals("")) desc = val;
+                        if (!val.equals("")) desc = val;
                     } else if (name.equals(TITLE + languageSuffix)) {
                         String val = getElementValue(parser, TITLE + languageSuffix);
-                        if(!val.equals("")) title = val;
+                        if (!val.equals("")) title = val;
                     } else {
                         // Unknown tag, skip
                         skipTag(parser);

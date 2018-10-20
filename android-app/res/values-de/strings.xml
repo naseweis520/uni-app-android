@@ -140,4 +140,7 @@
     <string name="meadow_behind_building_x">Wiese hinter Gebäude %1$s</string>
     <string name="mensa_language">de</string>
     <string name="details">Details</string>
+    <string name="preflabel_mensa_force_german_title">Mensa-Menü immer auf Deutsch anzeigen</string>
+    <string name="preflabel_mensa_force_german_on">Das Mensa-Menü wird immer auf Deutsch angezeigt</string>
+    <string name="preflabel_mensa_force_german_off">Fremdsprachige Mensa-Menüs können gelegentlich weniger detailreich als die detschen sein</string>
 </resources>

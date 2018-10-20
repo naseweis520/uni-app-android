@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="pref_campus" translatable="false">campus</string>
-    <string name="pref_campus_saar" translatable="false">saar</string>
     <string name="pref_campus_hom" translatable="false">hom</string>
+    <string name="pref_campus_saar" translatable="false">saar</string>
+    <string name="pref_last_whatsnew_version" translatable="false">whatsnew_last_version</string>
+    <string name="pref_last_whatsnew_hash" translatable="false">whatsnew_last_hash</string>
+    <string name="pref_mensa_force_german" translatable="false">mensa_force_german</string>
     <string name="pref_mensa_ingredients" translatable="false">mensa_ingredients</string>
+    <string name="pref_mensa_notification_times" translatable="false">mensa_notification_dates</string>
+    <!-- the string to use as summary if only the current pref value should be shown -->
+    <string name="pref_show_value" translatable="false">%s</string>
     <string name="pref_staff_search_fstnam" translatable="false">staffLastFst</string>
     <string name="pref_staff_search_lstnam" translatable="false">staffLastLst</string>
     <string name="pref_staff_search_prof_sel" translatable="false">staffLastSel</string>
-    <!-- the string to use as summary if only the current pref value should be shown -->
-    <string name="pref_show_value" translatable="false">%s</string>
-    <string name="pref_mensa_notification_times" translatable="false">mensa_notification_dates</string>
-    <string name="pref_last_whatsnew_version" translatable="false">whatsnew_last_version</string>
-    <string name="pref_last_whatsnew_hash" translatable="false">whatsnew_last_hash</string>
 </resources>

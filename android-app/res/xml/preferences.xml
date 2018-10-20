@@ -18,6 +18,12 @@
             android:defaultValue="true"
             android:summaryOn="@string/show_ingredients_on"
             android:summaryOff="@string/show_ingredients_off"/>
+        <CheckBoxPreference
+            android:key="@string/pref_mensa_force_german"
+            android:title="@string/preflabel_mensa_force_german_title"
+            android:defaultValue="false"
+            android:summaryOn="@string/preflabel_mensa_force_german_on"
+            android:summaryOff="@string/preflabel_mensa_force_german_off" />
         <de.unisaarland.UniApp.settings.MensaNotificationsPreference
             android:key="@string/pref_mensa_notification_times"
             android:title="@string/mensa_notifications_pref_title"/>

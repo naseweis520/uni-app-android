@@ -155,4 +155,7 @@
     <string name="campusmarkt" translatable="false">Campusmarkt</string>
     <string name="mensa_language">en</string>
     <string name="details">Details</string>
+    <string name="preflabel_mensa_force_german_title">Always display mensa menu in German</string>
+    <string name="preflabel_mensa_force_german_on">The mensa menu will always be displayed in German</string>
+    <string name="preflabel_mensa_force_german_off">Foreign-language mensa menus might occasionally be less detailed than the German ones</string>
 </resources>
