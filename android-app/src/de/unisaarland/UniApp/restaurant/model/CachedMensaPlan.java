@@ -98,7 +98,7 @@ public class CachedMensaPlan {
         if (mensaFetcher == null || !mensaUrl.equals(mensaFetcher.getUrl())) {
             ContentCache cache = Util.getContentCache(context);
             mensaFetcher = new NetworkRetrieveAndCache<>(mensaUrl, "mensa-" + campus, cache,
-                    new MensaXMLParser(), new NetworkDelegate(), context);
+                    new MensaXMLParser(context.getString(R.string.mensa_language)), new NetworkDelegate(), context);
         }
     }
 

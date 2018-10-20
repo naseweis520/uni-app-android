@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/search_field_row"
                 android:minHeight="50dp"
@@ -12,9 +13,10 @@
                     android:background="@drawable/list_item_selector">
 
         <ImageView android:layout_width="30dp" android:layout_height="30dp"
-                   android:id="@+id/category_icon" android:contentDescription="@string/empty_string"
+                   android:id="@+id/category_icon"
                    android:layout_alignParentLeft="true" android:layout_marginLeft="10dp"
-                   android:layout_centerVertical="true"/>
+                   android:layout_centerVertical="true"
+                   tools:ignore="ContentDescription" />
 
 
         <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="dummy"

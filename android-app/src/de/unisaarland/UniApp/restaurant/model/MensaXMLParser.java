@@ -24,7 +24,6 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
     private static final String START_TAG = "speiseplan";
     private static final String TAG = "tag";
     private static final String ITEM_TAG = "item";
-
     private static final String TITLE = "title";
     private static final String CATEGORY = "category";
     private static final String DESCRIPTION = "description";
@@ -33,6 +32,19 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
     private static final String PREIS3 = "preis3";
     private static final String COLOR = "color";
     private static final String TIMESTAMP = "timestamp";
+
+    private String languageSuffix;
+
+    MensaXMLParser(String language) {
+        switch (language) {
+            case "en":
+                languageSuffix = "_en";
+                break;
+            case "de":
+            default:
+                languageSuffix = "";
+        }
+    }
 
     @Override
     public MensaDayMenu[] extractFromXML(XmlPullParser parser)
@@ -88,19 +100,20 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
         int preis3 = 0;
         int color = 0;
 
-        while (parser.next() != XmlPullParser.END_TAG ) {
+        while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG)
                 continue;
             String name = parser.getName();
+
             switch (name) {
                 case TITLE:
-                    title = getElementValue(parser, TITLE);
+                    if (title == null) title = getElementValue(parser, TITLE);
                     break;
                 case CATEGORY:
-                    category = getElementValue(parser, CATEGORY);
+                    if (category == null) category = getElementValue(parser, CATEGORY);
                     break;
                 case DESCRIPTION:
-                    desc = getElementValue(parser, DESCRIPTION);
+                    if (desc == null) desc = getElementValue(parser, DESCRIPTION);
                     break;
                 case PREIS1:
                     preis1 = parsePreis(getElementValue(parser, PREIS1));
@@ -115,7 +128,20 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
                     color = parseColor(getElementValue(parser, COLOR));
                     break;
                 default:
-                    skipTag(parser);
+                    // Check, if localised tag exist and if it's not empty
+                    if (name.equals(CATEGORY + languageSuffix)) {
+                        String val = getElementValue(parser, CATEGORY + languageSuffix);
+                        if(!val.equals("")) category = val;
+                    } else if (name.equals(DESCRIPTION + languageSuffix)) {
+                        String val = getElementValue(parser, DESCRIPTION + languageSuffix);
+                        if(!val.equals("")) desc = val;
+                    } else if (name.equals(TITLE + languageSuffix)) {
+                        String val = getElementValue(parser, TITLE + languageSuffix);
+                        if(!val.equals("")) title = val;
+                    } else {
+                        // Unknown tag, skip
+                        skipTag(parser);
+                    }
             }
         }
 
@@ -125,7 +151,7 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
     }
 
     /**
-     * Returns the list of all labels extracted from occurances of "(A,B,C)" where each component is
+     * Returns the list of all labels extracted from occurrences of "(A,B,C)" where each component is
      * at most two characters long.
      */
     private String[] extractLabels(String desc) {
@@ -133,11 +159,11 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
         int pos = 0;
         while (pos < desc.length()) {
             int openParen = desc.indexOf('(', pos);
-            int closeParen = desc.indexOf(')', openParen+1);
+            int closeParen = desc.indexOf(')', openParen + 1);
             if (openParen == -1 || closeParen == -1)
                 break;
             boolean valid = true;
-            String[] parts = desc.substring(openParen+1, closeParen).split(",");
+            String[] parts = desc.substring(openParen + 1, closeParen).split(",");
             for (String part : parts)
                 if (part.trim().length() > 2)
                     valid = false;
@@ -180,11 +206,11 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
      */
     private int parsePreis(String str) {
         int commaPos = str.indexOf(',');
-        if (commaPos < 1 || commaPos+1 >= str.length())
+        if (commaPos < 1 || commaPos + 1 >= str.length())
             return 0;
         try {
             int euro = Integer.parseInt(str.substring(0, commaPos));
-            int cent = Integer.parseInt(str.substring(commaPos+1));
+            int cent = Integer.parseInt(str.substring(commaPos + 1));
             return 100 * euro + cent;
         } catch (NumberFormatException e) {
             return 0;
@@ -231,7 +257,7 @@ public class MensaXMLParser extends XMLExtractor<MensaDayMenu[]> {
     private void skipTag(XmlPullParser parser)
             throws XmlPullParserException, IOException {
         if (parser.getEventType() != XmlPullParser.START_TAG)
-            throw new IllegalStateException("Should be at start of a tag, is "+parser.getEventType());
+            throw new IllegalStateException("Should be at start of a tag, is " + parser.getEventType());
         int depth = 1;
         while (depth != 0) {
             switch (parser.next()) {

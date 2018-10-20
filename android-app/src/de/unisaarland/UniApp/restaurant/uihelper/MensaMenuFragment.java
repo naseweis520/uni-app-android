@@ -129,6 +129,13 @@ public class MensaMenuFragment extends Fragment {
             ProgressBar bar = rootView.findViewById(R.id.progress_bar);
             bar.setVisibility(View.GONE);
             Snackbar.make(rootView, message, Snackbar.LENGTH_LONG)
+                    .setAction(getString(R.string.details), v -> new AlertDialog.Builder(getContext())
+                            .setMessage(message)
+                            .setCancelable(true)
+                            .setPositiveButton(R.string.ok,
+                                    (dialog, id) -> dialog.dismiss())
+                            .create()
+                            .show())
                     .show();
         }
 

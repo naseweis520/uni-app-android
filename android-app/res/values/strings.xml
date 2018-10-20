@@ -12,7 +12,6 @@
     <string name="search_results">Search Results</string>
     <string name="info">Info</string>
     <string name="aboutText">About</string>
-    <string name="empty_string">""</string>
     <string name="bus_stations_text">Bus Stations</string>
     <string name="bus_search_text">Search</string>
     <string name="last_name">Last name</string>
@@ -154,4 +153,6 @@
     <string name="starbooks_coffee" translatable="false">Starbooks Coffee</string>
     <string name="fast_food_heroes" translatable="false">Fast Food Heroes</string>
     <string name="campusmarkt" translatable="false">Campusmarkt</string>
+    <string name="mensa_language">en</string>
+    <string name="details">Details</string>
 </resources>

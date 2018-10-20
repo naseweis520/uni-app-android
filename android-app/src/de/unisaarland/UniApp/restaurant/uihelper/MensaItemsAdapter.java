@@ -17,10 +17,10 @@ import de.unisaarland.UniApp.utils.ui.RemoteOrLocalViewAdapter;
  * Remote view factory and list adapter for the mensa items of one specific day.
  */
 public class MensaItemsAdapter extends RemoteOrLocalViewAdapter {
-    boolean isWidget;
+    private boolean isWidget;
     private MensaItem[] items;
 
-    public MensaItemsAdapter(MensaItem[] items, boolean isWidget) {
+    MensaItemsAdapter(MensaItem[] items, boolean isWidget) {
         this.isWidget = isWidget;
         this.items = items;
     }

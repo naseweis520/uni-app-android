@@ -12,7 +12,6 @@
     <string name="search_results">Ergebnisse</string>
     <string name="info">Info</string>
     <string name="aboutText">Über diese App</string>
-    <string name="empty_string">""</string>
     <string name="bus_stations_text">Haltestellen</string>
     <string name="bus_search_text">Suche</string>
     <string name="last_name">Nachname</string>
@@ -139,4 +138,6 @@
     <string name="basement">Erd­geschoss</string>
     <string name="old_ssl_error">Diese Funktionalität wird auf alten Geräten nicht unterstützt:\n%s</string>
     <string name="meadow_behind_building_x">Wiese hinter Gebäude %1$s</string>
+    <string name="mensa_language">de</string>
+    <string name="details">Details</string>
 </resources>
