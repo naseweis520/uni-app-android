@@ -17,6 +17,7 @@ import android.widget.TextView;
 import de.unisaarland.UniApp.about.AboutActivity;
 import de.unisaarland.UniApp.bus.BusActivity;
 import de.unisaarland.UniApp.campus.CampusActivity;
+import de.unisaarland.UniApp.map.MapActivity;
 import de.unisaarland.UniApp.restaurant.MensaMenuActivity;
 import de.unisaarland.UniApp.restaurant.OpeningHoursActivity;
 import de.unisaarland.UniApp.restaurant.notifications.MensaNotifications;
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setButtonListeners() {
 
-        Button newsButton = (Button) findViewById(R.id.newsBtn);
+        Button newsButton = findViewById(R.id.newsBtn);
         newsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(myIntent);
             }
         });
-        Button restaurantButton = (Button) findViewById(R.id.restaurantBtn);
+        Button restaurantButton = findViewById(R.id.restaurantBtn);
         restaurantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,15 +126,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        Button campusButton = (Button) findViewById(R.id.campusBtn);
+        Button campusButton = findViewById(R.id.campusBtn);
         campusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, CampusActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
                 MainActivity.this.startActivity(myIntent);
             }
         });
-        Button eventsButton = (Button) findViewById(R.id.eventsBtn);
+        Button eventsButton = findViewById(R.id.eventsBtn);
         eventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(myIntent);
             }
         });
-        Button busButton = (Button) findViewById(R.id.busBtn);
+        Button busButton = findViewById(R.id.busBtn);
         busButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(myIntent);
             }
         });
-        Button staffSearchButton = (Button) findViewById(R.id.staffBtn);
+        Button staffSearchButton = findViewById(R.id.staffBtn);
         staffSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

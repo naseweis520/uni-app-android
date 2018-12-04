@@ -255,7 +255,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                         link = "https://www.uni-saarland.de/studium/im/campus/essen/mensagarten.html";
                         locationDescription = getContext().getString(R.string.meadow_behind_building_x, "A1.7");
                         opening_hours = new LinkedHashMap<>();
-                        opening_hours.put(getContext().getString(R.string.during_season_at_dry_weather), new ArrayList<OpeningHourRule>() { {
+                        opening_hours.put(getContext().getString(R.string.during_season_in_dry_weather), new ArrayList<OpeningHourRule>() { {
                             add(new OpeningHourRule("Mo-Fr", "11:00 - 15:00"));
                         } });
                     } });
