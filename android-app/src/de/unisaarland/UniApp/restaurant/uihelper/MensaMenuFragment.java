@@ -35,7 +35,7 @@ public class MensaMenuFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_mensa_menu, container, false);
+        View rootView = inflater.inflate(R.layout.restaurant_mensa_menu_fragment, container, false);
         this.rootView = rootView;
 
         return rootView;

@@ -10,13 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import de.unisaarland.UniApp.about.AboutActivity;
 import de.unisaarland.UniApp.bus.BusActivity;
-import de.unisaarland.UniApp.campus.CampusActivity;
 import de.unisaarland.UniApp.map.MapActivity;
 import de.unisaarland.UniApp.restaurant.MensaMenuActivity;
 import de.unisaarland.UniApp.restaurant.OpeningHoursActivity;
@@ -102,62 +100,45 @@ public class MainActivity extends AppCompatActivity {
     private void setButtonListeners() {
 
         Button newsButton = findViewById(R.id.newsBtn);
-        newsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, RSSActivity.class);
-                myIntent.putExtra("category", RSSActivity.Category.News);
-                MainActivity.this.startActivity(myIntent);
-            }
+        newsButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, RSSActivity.class);
+            myIntent.putExtra("category", RSSActivity.Category.News);
+            MainActivity.this.startActivity(myIntent);
         });
         Button restaurantButton = findViewById(R.id.restaurantBtn);
-        restaurantButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, MensaMenuActivity.class);
-                MainActivity.this.startActivity(myIntent);
-            }
+        restaurantButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, MensaMenuActivity.class);
+            MainActivity.this.startActivity(myIntent);
         });
-        restaurantButton.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, OpeningHoursActivity.class);
-                MainActivity.this.startActivity(myIntent);
-                return true;
-            }
+        restaurantButton.setOnLongClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, OpeningHoursActivity.class);
+            MainActivity.this.startActivity(myIntent);
+            return true;
         });
         Button campusButton = findViewById(R.id.campusBtn);
-        campusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
-                MainActivity.this.startActivity(myIntent);
-            }
+        campusButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
+            MainActivity.this.startActivity(myIntent);
+        });
+        campusButton.setOnLongClickListener(v -> {
+            // @TODO: Open map and then Search
+            return true;
         });
         Button eventsButton = findViewById(R.id.eventsBtn);
-        eventsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, RSSActivity.class);
-                myIntent.putExtra("category", RSSActivity.Category.Events);
-                MainActivity.this.startActivity(myIntent);
-            }
+        eventsButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, RSSActivity.class);
+            myIntent.putExtra("category", RSSActivity.Category.Events);
+            MainActivity.this.startActivity(myIntent);
         });
         Button busButton = findViewById(R.id.busBtn);
-        busButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, BusActivity.class);
-                MainActivity.this.startActivity(myIntent);
-            }
+        busButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, BusActivity.class);
+            MainActivity.this.startActivity(myIntent);
         });
         Button staffSearchButton = findViewById(R.id.staffBtn);
-        staffSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, SearchStaffActivity.class);
-                MainActivity.this.startActivity(myIntent);
-            }
+        staffSearchButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, SearchStaffActivity.class);
+            MainActivity.this.startActivity(myIntent);
         });
     }
 

@@ -28,7 +28,9 @@ import de.unisaarland.UniApp.settings.SettingsActivity;
 public class MensaMenuActivity extends AppCompatActivity {
 
     public enum Campuses {
+        Dudweiler,
         Homburg,
+        Meerwiesertalweg,
         Mensagarten,
         Saarbruecken
     }
@@ -36,7 +38,7 @@ public class MensaMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mensa_menu);
+        setContentView(R.layout.restaurant_mensa_menu_activity);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

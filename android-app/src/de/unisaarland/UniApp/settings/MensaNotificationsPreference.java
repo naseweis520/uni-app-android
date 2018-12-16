@@ -36,7 +36,7 @@ public class MensaNotificationsPreference extends DialogPreference {
 
         setPositiveButtonText(R.string.set);
         setNegativeButtonText(R.string.cancel);
-        setDialogLayoutResource(R.layout.mensa_notification_settings);
+        setDialogLayoutResource(R.layout.restaurant_mensa_notification_settings);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class MensaNotificationsPreference extends DialogPreference {
             if (position < 0 || position > 5)
                 throw new AssertionError("position " + position);
             if (convertView == null)
-                convertView = View.inflate(context, R.layout.mensa_notification_day_item, null);
+                convertView = View.inflate(context, R.layout.restaurant_mensa_notification_day_item, null);
             String weekday = new DateFormatSymbols().getWeekdays()[weekDays[position]];
             TextView titleView = (TextView) convertView.findViewById(R.id.dayTitle);
             titleView.setText(weekday);

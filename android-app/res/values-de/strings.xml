@@ -37,9 +37,6 @@
     <string name="pin_all">Alle markieren</string>
     <string name="email_subject">Concerning Saarland University Android App</string>
     <string name="action">Auswahl</string>
-    <string name="web_or_route">Webseite oder Wegbeschreibung aufrufen</string>
-    <string name="website">Webseite</string>
-    <string name="route">Wegbeschreibung</string>
     <string name="no_staff_member_title">Suche erfolglos.</string>
     <string name="no_staff_member_found_description">Leider konnte kein Personal gefunden werden, das Ihren Suchkriterien entspricht.</string>
     <string name="too_few_search_terms_title">Zu wenige Suchbegriffe</string>
@@ -48,8 +45,6 @@
     <string name="fill_at_least_one">Bitte geben Sie Nachname oder Vorname ein.</string>
     <string name="at_station">An Haltestelle</string>
     <string name="search_bus">Bus Suche</string>
-    <string name="current_location_not_set">Standort kann nicht ermittelt werden</string>
-    <string name="enable_location_option">Bitte aktivieren Sie mindestens einen Standortdienst</string>
     <string name="copyright">© Universität des Saarlandes</string>
     <string name="contact_feedback">Kontakt / Feedback</string>
     <string name="development">Entwicklung:</string>
@@ -110,9 +105,6 @@
     <string name="show_ingredients_off">Inhaltsstoffe bei Mensa werden <b>nicht</b> angezeigt</string>
     <string name="show_ingredients_on">Inhaltsstoffe bei Mensa werden angezeigt</string>
     <string name="remove_all_pins">Alle Nadeln entfernen</string>
-    <string name="map_hybrid">Hybrid</string>
-    <string name="map_standard">Standard</string>
-    <string name="map_satellite">Satellit</string>
     <string name="set">Setzen</string>
     <string name="cancel">Abbrechen</string>
     <string name="mensa_notifications_pref_title">Mensabenachrichtigungen (experimentell)</string>
@@ -143,4 +135,6 @@
     <string name="preflabel_mensa_force_german_title">Mensa-Menü immer auf Deutsch anzeigen</string>
     <string name="preflabel_mensa_force_german_on">Das Mensa-Menü wird immer auf Deutsch angezeigt</string>
     <string name="preflabel_mensa_force_german_off">Fremdsprachige Mensa-Menüs können gelegentlich weniger detailreich als die detschen sein</string>
+    <string name="osm_licence_url">https://www.openstreetmap.org/copyright/de</string>
+    <string name="osm_licence">Karte © OpenStreetMap-Mitwirkende</string>
 </resources>

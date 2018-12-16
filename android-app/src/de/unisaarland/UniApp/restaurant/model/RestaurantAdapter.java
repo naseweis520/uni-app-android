@@ -66,7 +66,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // create a new view
-        final CardView cardView = (CardView)LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant_card, parent, false);
+        final CardView cardView = (CardView)LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_card, parent, false);
         final ConstraintLayout constraintLayout_collapseWrapper = cardView.findViewById(R.id.constraintLayout_collapseWrapper);
 
         // Collapse

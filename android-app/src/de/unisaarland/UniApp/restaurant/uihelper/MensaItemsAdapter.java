@@ -33,9 +33,9 @@ public class MensaItemsAdapter extends RemoteOrLocalViewAdapter {
     @Override
     public void buildView(int position, RemoteOrLocalViewBuilder builder) {
         if(isWidget) {
-            builder.setLayout(R.layout.item_mensa_menu_widget);
+            builder.setLayout(R.layout.restaurant_mensa_menu_widget_item);
         } else {
-            builder.setLayout(R.layout.item_mensa_menu);
+            builder.setLayout(R.layout.restaurant_mensa_menu_item);
         }
 
         MensaItem model = items[position];

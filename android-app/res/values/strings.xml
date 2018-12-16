@@ -37,9 +37,6 @@
     <string name="pin_all">Pin All</string>
     <string name="email_subject">Concerning Saarland University Android app</string>
     <string name="action">Action</string>
-    <string name="web_or_route">Visit website or route</string>
-    <string name="website">Website</string>
-    <string name="route">Route</string>
     <string name="ok" translatable="false">OK</string>
     <string name="no_staff_member_title">Staff member not found</string>
     <string name="no_staff_member_found_description">Unfortunately no staff member matches your search criteria.</string>
@@ -49,8 +46,6 @@
     <string name="fill_at_least_one">Please fill at least one search field.</string>
     <string name="at_station">At bus station</string>
     <string name="search_bus">Search a bus</string>
-    <string name="current_location_not_set">Current location is not set</string>
-    <string name="enable_location_option">Please enable at least one location option</string>
     <string name="copyright">© Saarland University</string>
     <string name="contact_feedback">Contact / Feedback</string>
     <string name="development">Development:</string>
@@ -113,9 +108,6 @@
     <string name="show_ingredients_on">Mensa ingredients are shown</string>
     <string name="show_ingredients_off">Mensa ingredients are <b>not</b> shown</string>
     <string name="remove_all_pins">Remove all pins</string>
-    <string name="map_hybrid">Hybrid</string>
-    <string name="map_standard">Standard</string>
-    <string name="map_satellite">Satellite</string>
     <string name="set">Set</string>
     <string name="cancel">Cancel</string>
     <string name="mensa_notifications_pref_title">Mensa Notifications (experimental)</string>
@@ -158,4 +150,9 @@
     <string name="preflabel_mensa_force_german_title">Always display mensa menu in German</string>
     <string name="preflabel_mensa_force_german_on">The mensa menu will always be displayed in German</string>
     <string name="preflabel_mensa_force_german_off">Foreign-language mensa menus might occasionally be less detailed than the German ones</string>
+    <string name="osm_licence_url">https://www.openstreetmap.org/copyright/en</string>
+    <string name="osm_licence">Map © OpenStreetMap contributors</string>
+    <string name="dudweiler" translatable="false">Dud­weiler</string>
+    <string name="meerwiesertalweg" translatable="false">Meer­wieser­tal­weg</string>
+    <string name="open_location_in_external_app">Open this location in an external app</string>
 </resources>

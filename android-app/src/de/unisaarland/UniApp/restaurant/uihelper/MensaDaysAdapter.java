@@ -37,7 +37,7 @@ public class MensaDaysAdapter extends RemoteOrLocalViewAdapter {
 
     @Override
     public void buildView(int position, RemoteOrLocalViewAdapter.RemoteOrLocalViewBuilder builder) {
-        builder.setLayout(R.layout.restaurant_layout_list);
+        builder.setLayout(R.layout.restaurant_mensa_menu_layout_list);
 
         long dateMillis = mensaItems[position].getDayStartMillis();
 

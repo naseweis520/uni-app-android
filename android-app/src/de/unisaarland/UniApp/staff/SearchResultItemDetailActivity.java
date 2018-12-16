@@ -11,7 +11,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import de.unisaarland.UniApp.R;
-import de.unisaarland.UniApp.campus.CampusActivity;
+import de.unisaarland.UniApp.map.MapActivity;
 import de.unisaarland.UniApp.utils.ContentCache;
 import de.unisaarland.UniApp.utils.NetworkRetrieveAndCache;
 import de.unisaarland.UniApp.utils.UpNavigationActionBarActivity;
@@ -118,7 +118,7 @@ public class SearchResultItemDetailActivity extends UpNavigationActionBarActivit
             View.OnClickListener showBuildingClick = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent myIntent = new Intent(SearchResultItemDetailActivity.this, CampusActivity.class);
+                    Intent myIntent = new Intent(SearchResultItemDetailActivity.this, MapActivity.class);
                     myIntent.putExtra("building", info.getBuilding());
                     SearchResultItemDetailActivity.this.startActivity(myIntent);
                 }

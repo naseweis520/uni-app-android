@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // Google Play Services
-    implementation "com.google.android.gms:play-services-maps:16.0.0"
     implementation "com.google.android.gms:play-services-location:16.0.0"
     // Support Libraries
     implementation "com.android.support:appcompat-v7:27.1.1"

@@ -49,7 +49,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
 
-        setContentView(R.layout.activity_opening_hours);
+        setContentView(R.layout.restaurant_openinghours_activity);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -349,7 +349,7 @@ public class OpeningHoursActivity extends AppCompatActivity {
                     } });
             }
 
-            View rootView = inflater.inflate(R.layout.fragment_opening_hours, container, false);
+            View rootView = inflater.inflate(R.layout.restaurant_openinghours_fragment, container, false);
 
             recyclerView_restaurant = rootView.findViewById(R.id.recyclerView_restaurant);
             recyclerView_restaurant.setHasFixedSize(true);
