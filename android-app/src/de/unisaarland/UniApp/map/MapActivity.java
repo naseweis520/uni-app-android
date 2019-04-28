@@ -283,14 +283,14 @@ public class MapActivity extends AppCompatActivity {
 
         // Overlays
         float overlayTransparency = 0.15f;
-        addAssetOverlay("map/overlay/dudweiler.png", new GeoPoint(49.27569358, 7.03500349),
-                new GeoPoint(49.27347584, 7.040334882910539), overlayTransparency);
-        addAssetOverlay("map/overlay/homburg.png", new GeoPoint(49.31225306, 7.33701911),
-                new GeoPoint(49.30133324, 7.3517460616117769), overlayTransparency);
-        addAssetOverlay("map/overlay/saarbruecken_2016_04.png", new GeoPoint(49.25990786, 7.03353523),
-                new GeoPoint(49.24951497, 7.052352887091693), overlayTransparency);
-        addAssetOverlay("map/overlay/sport.png", new GeoPoint(49.25148352, 7.03029041),
-                new GeoPoint(49.24917759, 7.03959151), overlayTransparency);
+        addAssetOverlay("map/overlay/dudweiler.png", new GeoPoint(49.275693, 7.035003),
+                new GeoPoint(49.273475, 7.040334), overlayTransparency);
+        addAssetOverlay("map/overlay/homburg.png", new GeoPoint(49.312253, 7.337019),
+                new GeoPoint(49.301333, 7.351746), overlayTransparency);
+        addAssetOverlay("map/overlay/saarbruecken_2016_11.png", new GeoPoint(49.259810, 7.032793),
+                new GeoPoint(49.250751, 7.052331), overlayTransparency);
+        addAssetOverlay("map/overlay/sport.png", new GeoPoint(49.251483, 7.030290),
+                new GeoPoint(49.249177, 7.039591), overlayTransparency);
 
         // Location
         locationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(getBaseContext()), map);
@@ -355,7 +355,7 @@ public class MapActivity extends AppCompatActivity {
         }
 
         for (PointOfInterest poi : POIs) {
-            int tempColor = poi.getColor();
+            String tempColor = poi.getColor();
             /* @TODO: Implement
             float color = tempColor == 1 ? BitmapDescriptorFactory.HUE_CYAN
                     : tempColor == 2 ? BitmapDescriptorFactory.HUE_GREEN
