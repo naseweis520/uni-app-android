@@ -1,0 +1,28 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_mensa"
+        android:shortcutId="uds_mensa"
+        android:shortcutLongLabel="@string/mensa"
+        android:shortcutShortLabel="@string/mensa">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="de.unisaarland.UniApp.restaurant.MensaMenuActivity"
+            android:targetPackage="de.unisaarland.UniApp" />
+
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_map"
+        android:shortcutId="uds_map"
+        android:shortcutLongLabel="@string/campusText"
+        android:shortcutShortLabel="@string/campusText">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="de.unisaarland.UniApp.map.MapActivity"
+            android:targetPackage="de.unisaarland.UniApp" />
+
+    </shortcut>
+</shortcuts>
