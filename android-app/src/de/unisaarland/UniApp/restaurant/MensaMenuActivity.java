@@ -132,7 +132,6 @@ public class MensaMenuActivity extends AppCompatActivity {
         return true;
     }
 
-
     private static class CampusAdapter extends ArrayAdapter<String> implements ThemedSpinnerAdapter {
         private final Helper mDropDownHelper;
 

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+
     <color name="uni_blue">#184c7c</color>
     <color name="uni_real">#03426e</color>
     <color name="uni_blue_light">#69b5fc</color>
-    <color name="uni_blue_dark">#12395d</color>
-    <color name="black">#000000</color>
+
+    <!-- Taken from https://www.uni-saarland.de/fileadmin/user_upload/page/relaunch/startseite_6.2.2019.jpg -->
+    <color name="uni_blue_dark">#081e36</color>
+    <color name="uni_blue_lighter">#004976</color>
+    <color name="uni_blue_logo">#0f4279</color>
+    <color name="uni_highlight">#c11f50</color>
 </resources>

@@ -260,6 +260,12 @@ public class MapActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     public void setupMap() {
         // Map
         map = findViewById(R.id.map);
@@ -355,7 +361,7 @@ public class MapActivity extends AppCompatActivity {
         }
 
         for (PointOfInterest poi : POIs) {
-            String tempColor = poi.getColor();
+            // String tempColor = poi.getColor();
             /* @TODO: Implement
             float color = tempColor == 1 ? BitmapDescriptorFactory.HUE_CYAN
                     : tempColor == 2 ? BitmapDescriptorFactory.HUE_GREEN

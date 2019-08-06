@@ -5,16 +5,25 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import de.unisaarland.UniApp.about.AboutActivity;
 import de.unisaarland.UniApp.bus.BusActivity;
+import de.unisaarland.UniApp.feed.FeedFragment;
 import de.unisaarland.UniApp.map.MapActivity;
 import de.unisaarland.UniApp.restaurant.MensaMenuActivity;
 import de.unisaarland.UniApp.restaurant.OpeningHoursActivity;
@@ -27,6 +36,8 @@ import de.unisaarland.UniApp.staff.SearchStaffActivity;
  * Launcher Activity of the application this Activity will be displayed when application is launched from the launcher
  */
 public class MainActivity extends AppCompatActivity {
+    private FeedFragment feedFragment;
+    private BottomSheetBehavior<View> bottomSheetBehavior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +48,74 @@ public class MainActivity extends AppCompatActivity {
         // set Listeners for the main screen to launch specific activity
         setButtonListeners();
 
+        // Populate fragment container `@id/mainFragment` with content
+        feedFragment = new FeedFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.mainFragment, feedFragment)
+                .commit();
+
         // And set the mensa preferences (is not strictly needed, since each alarm should trigger
         // the next one, but for the case that something goes wrong...)
         new MensaNotifications(this).setNext();
+
+        // Set bottomsheet event handlers
+        ImageView imageView_swipeIndicator = findViewById(R.id.imageView_swipeIndicator);
+        imageView_swipeIndicator.setImageDrawable(AnimatedVectorDrawableCompat.create(MainActivity.this, R.drawable.swipe_indicator_up2down));
+
+        ScrollView scrollView_bottomSheet = findViewById(R.id.bottomsheet);
+        bottomSheetBehavior = BottomSheetBehavior.from(scrollView_bottomSheet);
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                // @TODO: Set indicator
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    // Set indicator icon
+                    AnimatedVectorDrawableCompat swipeIndicatorDrawable = AnimatedVectorDrawableCompat.create(MainActivity.this, R.drawable.swipe_indicator_up2down);
+                    imageView_swipeIndicator.setImageDrawable(swipeIndicatorDrawable);
+                    swipeIndicatorDrawable.start();
+                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    // Set indicator icon
+                    AnimatedVectorDrawableCompat swipeIndicatorDrawable = AnimatedVectorDrawableCompat.create(MainActivity.this, R.drawable.swipe_indicator_down2up);
+                    imageView_swipeIndicator.setImageDrawable(swipeIndicatorDrawable);
+                    swipeIndicatorDrawable.start();
+
+                    // Scroll navsheet to top if not there already
+                    if (scrollView_bottomSheet.getScrollY() > 0) {
+                        scrollView_bottomSheet.smoothScrollTo(0, 0);
+                    }
+                } else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
+        RelativeLayout relativeLayout_swipeIndicatorWrapper = findViewById(R.id.relativeLayout_swipeIndicatorWrapper);
+        relativeLayout_swipeIndicatorWrapper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                } else {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                }
+            }
+        });
+
+        // Detect first run and initially show bottomsheet and collapse it afterwards
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (!settings.contains(getString(R.string.pref_campus))) {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+            Handler handler = new Handler();
+            Runnable r = () -> {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            };
+            handler.postDelayed(r, 500);
+        }
     }
 
     /**
@@ -95,6 +171,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        } else {
+            finish();
+        }
     }
 
     private void setButtonListeners() {
@@ -154,10 +239,10 @@ public class MainActivity extends AppCompatActivity {
         if (currentHash == savedHash)
             return;
 
-        settings.edit().
-                putInt(getString(R.string.pref_last_whatsnew_version), currentVersionNumber).
-                putInt(getString(R.string.pref_last_whatsnew_hash), currentHash).
-                commit();
+        settings.edit()
+                .putInt(getString(R.string.pref_last_whatsnew_version), currentVersionNumber)
+                .putInt(getString(R.string.pref_last_whatsnew_hash), currentHash)
+                .apply();
 
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle(R.string.whatsnew_title)

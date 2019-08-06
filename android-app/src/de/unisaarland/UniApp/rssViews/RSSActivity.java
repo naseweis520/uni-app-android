@@ -2,7 +2,6 @@ package de.unisaarland.UniApp.rssViews;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -17,7 +16,6 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -39,11 +37,11 @@ public class RSSActivity extends UpNavigationActionBarActivity {
                 if(convertView == null){
                     convertView = View.inflate(context, R.layout.news_item, null);
                 }
-                TextView newsTitle = (TextView) convertView.findViewById(R.id.news_date);
+                TextView newsTitle = convertView.findViewById(R.id.news_date);
                 Date date = item.getPublicationDate();
                 String datestring = DateFormat.getDateInstance(DateFormat.LONG).format(date);
                 newsTitle.setText(datestring);
-                TextView newsDescription = (TextView) convertView.findViewById(R.id.news_item_text);
+                TextView newsDescription = convertView.findViewById(R.id.news_item_text);
                 newsDescription.setGravity(Gravity.CENTER_VERTICAL);
                 newsDescription.setText(item.getTitle());
                 return convertView;
@@ -57,12 +55,7 @@ public class RSSActivity extends UpNavigationActionBarActivity {
                 for (RSSItem m : items)
                     if (!m.getPublicationDate().before(today))
                         filtered.add(m);
-                Collections.sort(filtered, new Comparator<RSSItem>() {
-                    @Override
-                    public int compare(RSSItem lhs, RSSItem rhs) {
-                        return lhs.getPublicationDate().compareTo(rhs.getPublicationDate());
-                    }
-                });
+                Collections.sort(filtered, (lhs, rhs) -> lhs.getPublicationDate().compareTo(rhs.getPublicationDate()));
                 return filtered;
             }
 
@@ -76,13 +69,13 @@ public class RSSActivity extends UpNavigationActionBarActivity {
                 //Set month in locale language
                 String month = dateCal.getDisplayName(Calendar.MONTH, Calendar.SHORT,
                         Locale.getDefault());
-                TextView eventMonth = (TextView) convertView.findViewById(R.id.event_month_text);
+                TextView eventMonth = convertView.findViewById(R.id.event_month_text);
                 eventMonth.setText(month);
                 //Set day
-                TextView eventDate = (TextView) convertView.findViewById(R.id.event_day_text);
+                TextView eventDate = convertView.findViewById(R.id.event_day_text);
                 eventDate.setText(Integer.toString(dateCal.get(Calendar.DAY_OF_MONTH)));
 
-                TextView eventDescription = (TextView) convertView.findViewById(R.id.event_description);
+                TextView eventDescription = convertView.findViewById(R.id.event_description);
                 eventDescription.setText(item.getTitle());
                 return convertView;
             }
@@ -120,7 +113,7 @@ public class RSSActivity extends UpNavigationActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        ListView listView = (ListView)findViewById(R.id.newsItemListView);
+        ListView listView = findViewById(R.id.newsItemListView);
         listState = listView.onSaveInstanceState();
     }
 
@@ -177,7 +170,7 @@ public class RSSActivity extends UpNavigationActionBarActivity {
         public void onUpdate(List<RSSItem> items, boolean fromCache) {
             hasItems = true;
 
-            ProgressBar bar = (ProgressBar) findViewById(R.id.progress_bar);
+            ProgressBar bar = findViewById(R.id.progress_bar);
             bar.clearAnimation();
             bar.setVisibility(View.INVISIBLE);
             populateItems(items);
@@ -185,26 +178,24 @@ public class RSSActivity extends UpNavigationActionBarActivity {
 
         @Override
         public void onStartLoading() {
-            ProgressBar bar = (ProgressBar) findViewById(R.id.progress_bar);
+            ProgressBar bar = findViewById(R.id.progress_bar);
             bar.setVisibility(View.VISIBLE);
             bar.animate();
         }
 
         @Override
         public void onFailure(String message) {
-            ProgressBar bar = (ProgressBar) findViewById(R.id.progress_bar);
+            ProgressBar bar = findViewById(R.id.progress_bar);
             bar.setVisibility(View.GONE);
             new AlertDialog.Builder(RSSActivity.this).
                     setMessage(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? message: String.format(getString(R.string.old_ssl_error), message)).
                     setCancelable(true).
                     setPositiveButton(R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                            (dialog, id) -> {
                                 dialog.dismiss();
                                 if (!hasItems)
                                     onBackPressed();
-                            }
-                        })
+                            })
                     .create().show();
         }
 
@@ -221,7 +212,7 @@ public class RSSActivity extends UpNavigationActionBarActivity {
      * specified model to it so that it will display list of event items.
      */
     private void populateItems(List<RSSItem> items) {
-        ListView itemsList = (ListView) findViewById(R.id.newsItemListView);
+        ListView itemsList = findViewById(R.id.newsItemListView);
 
         if (listState == null)
             listState = itemsList.onSaveInstanceState();

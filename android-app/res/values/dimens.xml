@@ -12,6 +12,7 @@
     <dimen name="cardview_vertical_padding_semi">4dp</dimen>
 
     <dimen name="main_buttonpadding">12dp</dimen>
+    <dimen name="main_navsheet_peekheight">40dp</dimen>
 
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>

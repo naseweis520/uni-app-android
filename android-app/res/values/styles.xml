@@ -11,9 +11,19 @@
         <!-- ...and here we setting appcompat’s color theming attrs -->
         <item name="colorPrimary">@color/uni_blue</item>
         <item name="colorPrimaryDark">@color/uni_blue_dark</item>
-        <item name="colorAccent">@color/uni_blue_light</item>
+        <item name="colorAccent">@color/uni_highlight</item>
 
         <!-- The rest of your attributes -->
+    </style>
+
+    <style name="FeedCardText">
+        <item name="android:textColor">#333</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="FeedCardTitle" parent="TitleTextStyle">
+        <item name="android:textColor">@color/uni_blue_lighter</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="YourAnimation.Activity" parent="android:Animation.Activity">
