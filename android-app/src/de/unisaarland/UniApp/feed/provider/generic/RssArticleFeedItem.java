@@ -1,8 +1,8 @@
 package de.unisaarland.UniApp.feed.provider.generic;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.TextViewCompat;
+import androidx.annotation.NonNull;
+import androidx.core.widget.TextViewCompat;
 import android.view.View;
 import android.widget.TextView;
 

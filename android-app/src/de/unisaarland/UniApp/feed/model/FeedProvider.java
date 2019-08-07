@@ -2,7 +2,7 @@ package de.unisaarland.UniApp.feed.model;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public abstract class FeedProvider {
     public Context context;

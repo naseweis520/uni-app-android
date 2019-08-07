@@ -3,7 +3,7 @@ package de.unisaarland.UniApp.rssViews;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ProgressBar;

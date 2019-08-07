@@ -1,11 +1,11 @@
 package de.unisaarland.UniApp.restaurant.uihelper;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar.Tab;
-import android.support.v7.app.ActionBar.TabListener;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.ActionBar.Tab;
+import androidx.appcompat.app.ActionBar.TabListener;
 
 public class SupportFragmentTabListener<T extends Fragment> implements TabListener {
     private Fragment mFragment;

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cursoradapter.widget.CursorAdapter;
+
 import java.util.Collections;
 
 import de.unisaarland.UniApp.R;
@@ -16,7 +18,7 @@ import de.unisaarland.UniApp.database.DatabaseHandler;
 import de.unisaarland.UniApp.map.MapActivity;
 
 
-public class SearchAdapter extends android.support.v4.widget.CursorAdapter {
+public class SearchAdapter extends CursorAdapter {
     private final MapActivity parent;
 
     private final CategoryIconCache catIconCache;

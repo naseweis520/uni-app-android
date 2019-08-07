@@ -2,9 +2,9 @@ package de.unisaarland.UniApp.feed.provider;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import de.unisaarland.UniApp.R;
 import de.unisaarland.UniApp.feed.provider.generic.GenericRssArticlesExtractor;
